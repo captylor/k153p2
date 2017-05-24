@@ -5,9 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function pageClose(){
+	opener.document.form이름.id입력name.value=document.aaa.id.value;
+	self.close();
+}
+</script>
 </head>
 <body>
-	<form action="../IdCheck" method="post">
+	<form action="/k153p2/IdCheck" method="post" name='aaa'>
 		<input type="text" name="id">
 		<button>중복체크</button>
 	</form>
