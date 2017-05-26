@@ -24,9 +24,10 @@ happycafe
 </div>
 <div id="sidebar" style="text-align:right"> 
 <Strong>Happycafe</Strong>
-<br><a href="">소개</a></div>
+<br><a href="intro.do">소개</a>
+<br><a href="intro.do?year=2017">연혁</a></div>
 <div id="content">해피Cafe 소개<br>
-<img src="happp.jpg" width='500'><br>
+<img src="${pageContext.request.contextPath}/checkId/happp.jpg" width='500'><br>
 대한민국에서 가장 특별한 커피 연구소~! HappyCafe에서<br>
 여러분에게 더욱 큰 행복을 주기위해 노력하겠습니다!!
 </div>
