@@ -11,7 +11,6 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/productMenu.js"></script>
 <title>Insert title here</title>
-
 </head>
 <body>
 	<div id="header">a</div>
@@ -31,6 +30,7 @@
 	}
 
 	var side = "${side}";
+	alert(side);
 	if (side.match("drink")) {
 		$("#content").load("product_List.jsp");
 	} else if (side.match("bread")) {
