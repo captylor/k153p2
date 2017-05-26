@@ -9,48 +9,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ajax.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<script type="text/javascript">
-
-	function side_load(pageName) { //요청
-		alert("사이드 페이지 : " + pageName);
-		sendRequest(pageName, null, side_loaded, 'POST');
-	//document.getElementById("sidebar").innerHTML = "aaaa"; //왜 이 부분이 들어가냐 사이드 바 메뉴가 나오는??/
-	}
-	function side_loaded() { //콜백
-		//데이터요청한 후 할일
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			var str = xhr.responseText; //str: String ==> "Hello,Ajax~!!" 
-			console.log(str);
-			var content = document.getElementById('sidebar');
-			console.log(typeof (content));
-			content.innerHTML = str;
-		}
-	}
-<<<<<<< HEAD
-	
-	var menu = "${menu}";
-	alert("메뉴 값 : "+menu)
-	if (menu.match("true")) {
-		side_load("product_Menu.jsp");
-		alert("사이드바 만듦");
-	}
-
-	var side = "${side}";
-	if (side.match("drink")) {
-	//	alert("사이드 바 음료 선택");
-		contents_load("product_List.jsp"); //갤러리
-		//$("#div 아이디").load("로딩할 페이지 URL", {넘길 파라메터});
-		//$("#content").load("product_List.jsp", null);
-	} else if (side.match("bread")) {
-	//	alert("사이드 바 빵 선택");
-		contents_load("product_List.jsp"); //갤러리
-		//$("#content").load("product_List.jsp", null);
-	}
-=======
-	//$("#div 아이디").load("로딩할 페이지 URL", {넘길 파라메터});
->>>>>>> d98f8b259e8c197212073df5bb60e64ce5eeae35
-</script>
+<script src="${pageContext.request.contextPath}/js/productMenu.js"></script>
 <title>Insert title here</title>
 </head>
 <body>

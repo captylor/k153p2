@@ -28,13 +28,13 @@ public class productCtrl extends HttpServlet {
 		req.getSession().removeAttribute("side");// 기존의 세션을 지우고
 		req.getSession().removeAttribute("menu");//
 
-		//String menu = req.getParameter("itemMenu");
-		//System.out.println("aaaa : " + menu);
+		// String menu = req.getParameter("itemMenu");
+		// System.out.println("aaaa : " + menu);
 		String str = "";
-		//if (menu != null) {
-			req.getSession().setAttribute("menu", "true");// session으로 바꾸고
-			str = "?menu=true";
-		//}
+		// if (menu != null) {
+		req.getSession().setAttribute("menu", "true");// session으로 바꾸고
+		str = "?menu=true";
+		// }
 
 		String subMenu = req.getParameter("sideMenu");
 		if (subMenu != null) {
@@ -49,8 +49,8 @@ public class productCtrl extends HttpServlet {
 				str = "?menu=true&side=bread";
 			}
 		}
-		System.out.println("menu : "+req.getSession().getAttribute("menu"));
-		System.out.println("sideMenu : "+req.getSession().getAttribute("side"));
+		System.out.println("menu : " + req.getSession().getAttribute("menu"));
+		System.out.println("sideMenu : " + req.getSession().getAttribute("side"));
 		System.out.println("=========================");
 		res.sendRedirect("/k153p2/product/product_index.jsp" + str);
 	}
