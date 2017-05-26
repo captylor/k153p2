@@ -41,7 +41,7 @@ li a :hover:not (.active ){
 	<ul>
 		<li style="float: left"><a class="active" href="#about" id="home">Happy
 				Cafe</a></li>
-		<li><a href="/k153p2/item.do?itemMenu=" id="page1">제품</a></li>
+		<li><a href="/k153p2/item.do?itemMenu=true" id="page1">제품</a></li>
 		<li><a href="#st" id="page2">매장 찾기</a></li>
 		<li><a href="#contact" id="page3">매장 관리</a></li>
 		<li><a href="#contact" id="page4">게시판</a></li>
