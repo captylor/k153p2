@@ -30,7 +30,6 @@
 	}
 
 	var side = "${side}";
-	alert(side);
 	if (side.match("drink")) {
 		$("#content").load("product_List.jsp");
 	} else if (side.match("bread")) {

@@ -1,5 +1,4 @@
 function side_load(pageName) { //요청
-	alert("사이드 페이지 : " + pageName);
 	sendRequest(pageName, null, side_loaded, 'POST');
 //document.getElementById("sidebar").innerHTML = "aaaa"; //왜 이 부분이 들어가냐 사이드 바 메뉴가 나오는??/
 }
