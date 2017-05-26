@@ -28,7 +28,7 @@ happycafe
 <Strong>지점장</Strong><br>
 <a href="afflicate.do?manage=manage">지점관리</a><br>
 <a href="afflicate.do?buy=buy">물품구매</a><br>
-<Strong>관리자</Strong>
+<Strong>관리자</Strong><br>
 <a href="afflicate.do?sold=sold">지점별매출</a><br>
 <a href="afflicate.do?send=send">물품보내기</a><br></div>
 <div id="content">가맹안내<br>
