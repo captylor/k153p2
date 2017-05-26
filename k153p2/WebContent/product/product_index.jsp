@@ -36,7 +36,9 @@
 			content.innerHTML = str;
 		}
 	}
+	
 	var menu = "${menu}";
+	alert("메뉴 값 : "+menu)
 	if (menu.match("true")) {
 		side_load("product_Menu.jsp");
 		alert("사이드바 만듦");
