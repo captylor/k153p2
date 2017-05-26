@@ -6,31 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../css/basic.css">
 <%--스타일 시트 적용 --%>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ajax.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/productMenu.js"></script>
-
-
-<!-- <script type="text/javascript">
-function contents_load(pageName) { //요청
-	alert("사이드 페이지 : " + pageName);
-	sendRequest(pageName, null, contents_loaded, 'POST');
-//document.getElementById("sidebar").innerHTML = "aaaa"; //왜 이 부분이 들어가냐 사이드 바 메뉴가 나오는??/
-}
-function contents_loaded() { //콜백
-	//데이터요청한 후 할일
-	if (xhr.readyState == 4 && xhr.status == 200) {
-		var str = xhr.responseText; //str: String ==> "Hello,Ajax~!!" 
-		console.log(str);
-		var content = document.getElementById('content');
-		console.log(typeof (content));
-		content.innerHTML = str;
-	}
-}
-</script>  -->
-
-
 <title>Insert title here</title>
 </head>
 <body>
@@ -53,10 +32,8 @@ function contents_loaded() { //콜백
 	var side = "${side}";
 	alert(side);
 	if (side.match("drink")) {
-		//contents_load('product_List.jsp');
 		$("#content").load("product_List.jsp");
 	} else if (side.match("bread")) {
-		//contents_load('product_List.jsp');
 		$("#content").load("product_List.jsp");
 	}
 </script>
