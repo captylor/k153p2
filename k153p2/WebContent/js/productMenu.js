@@ -11,4 +11,4 @@ function side_loaded() { //콜백
 		console.log(typeof (content));
 		content.innerHTML = str;
 	}
-}
+}	
