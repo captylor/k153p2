@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/basic.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css">
 <%--스타일 시트 적용 --%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ajax.js"></script>
