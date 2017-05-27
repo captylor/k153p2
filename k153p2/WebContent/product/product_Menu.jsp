@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<a href="/k153p2/item.do?sideMenu=bread">빵</a>
+
+<style>
+input[type=button] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+</style>
+<input type="button" value="빵" id="bread">
 <br>
-<a href="/k153p2/item.do?sideMenu=drink">음료</a>
+<input type="button" value="음료" id="drink">

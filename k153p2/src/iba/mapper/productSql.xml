@@ -5,5 +5,8 @@
 	<select id="selectAll" resultClass="com.kosta.k153p2.product.dto.ItemInfo">
 		select * from ITEMINFO
 	</select>
-	
+
+	<select id="selMenu" resultClass="com.kosta.k153p2.product.dto.ItemInfo" parameterClass="int" >
+		select * from ITEMINFO where ITEM_TYPE=#value#
+	</select>
 </sqlMap>

@@ -26,5 +26,16 @@ public class ItemInfoDao {
 		}
 		return list;
 	}
-
+	
+	public List<ItemInfo> selectMenu(int sideMenu) {
+		List<ItemInfo> list = null;
+		try {
+			list = smc.queryForList("product.selMenu",sideMenu);
+			System.out.println("찾아온 사이즈 : " + list.size());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
