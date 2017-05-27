@@ -21,18 +21,18 @@ div.desc {
 	padding: 15px;
 	text-align: center;
 }
+
+#paging {
+	text-align: center;
+}
+
+a.pagings-item, a.pagings-side {
+	margin: 0 .25em;
+}
+
+a.pagings-item.selected {
+	font-weight: bold;
+}
 </style>
 
-<table id="div_getData">
-	<thead>
-		<tr>
-			<td>no</td>
-			<td>이름</td>
-			<td>소비자가격</td>
-			<td>타입</td>
-		</tr>
-	</thead>
-	<tbody></tbody>
-
-</table>
 <div id="div3"></div>

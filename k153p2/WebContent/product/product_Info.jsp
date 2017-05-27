@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%--제품 각각의 상세 정보를 출력 --%>
 <html>
@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<input type="text" id="dbid">
 </body>
 </html>

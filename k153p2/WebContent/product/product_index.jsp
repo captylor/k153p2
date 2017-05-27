@@ -43,14 +43,8 @@
 			dataType : "json",
 			success : function(data) {
 				for (var i = 0; i < data.length; i++) {
-/* 					htmlText += "<tr>"
-						+ "<td>" + data[i].item_no + "</td>"
-						+ "<td>" + data[i].item_name + "</td>"
-						+ "<td>" + data[i].item_userPrice + "</td>"
-						+ "<td>" + data[i].item_type + "</td>"
-						+ "</tr>" */
 						htmlText += 
-							"<div class=\"gallery\">"
+							"<div class=\"gallery\" id=\""+data[i].item_no+" \">"
 								+"<a target=\"_blank\" href=\"img_mountains.jpg\">" 
 								+"<img src=\""+data[i].item_name+".jpg\" alt=\""+data[i].item_name+"\" width=\"600\" height=\"400\"></a>"
 								+"<div class=\"desc\">"+data[i].item_no+","+data[i].item_userPrice+"</div>"
@@ -75,11 +69,27 @@
 			},
 		});
 	});
+	$(document).on('click', '.gallery', function() {
+		var img = $(this).attr("id");
 	
+		var winHeight = document.body.clientHeight;	// 현재창의 높이
+		var winWidth = document.body.clientWidth;	// 현재창의 너비
+		var winX = window.screenLeft;	// 현재창의 x좌표
+		var winY = window.screenTop;	// 현재창의 y좌표
+		
+		var popWidth = 300;
+		var popHeight = 500;
+		var popX = winX + (winWidth - popWidth)/2;
+		var popY = winY + (winHeight - popHeight)/2;
+		var iteminfoPOP = window.open("./product_Info.jsp","popup","width="+popWidth+"px,height="+popHeight+"px,top="+popY+",left="+popX);
+	});
+	
+	$(document).on('click', '#sideMenu', function() {
+		$(".input").toggle();
+	});
 </script>
 <title>Insert title here</title>
 </head>
-
 <body>
 	<div id="header">a</div>
 	<div id="header2">
