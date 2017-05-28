@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%
+	//선택한 사이드 메뉴에 따른 제품 정보 json으로 보여줌
 	ItemInfoDao dao = new ItemInfoDao();
 	String sideM_Str= request.getParameter("sideMenu");
 	int sideM = Integer.parseInt(sideM_Str);
@@ -29,5 +30,5 @@
 	String str = jArray.toString();
 
 	out.print(str);
-	out.flush();
+	out.flush();//버퍼를 모두 지운다
 %>

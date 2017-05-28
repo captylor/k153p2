@@ -9,4 +9,8 @@
 	<select id="selMenu" resultClass="com.kosta.k153p2.product.dto.ItemInfo" parameterClass="int" >
 		select * from ITEMINFO where ITEM_TYPE=#value#
 	</select>
+	
+	<select id="eachItem" resultClass="com.kosta.k153p2.product.dto.ItemInfo" parameterClass="int">
+		select * from ITEMINFO where ITEM_NO=#value#
+	</select>
 </sqlMap>
