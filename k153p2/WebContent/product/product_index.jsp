@@ -33,7 +33,6 @@
 		} else {
 			sideMenu = 2;
 		}
-		alert(side);
 		$.ajax({
 			type : "post",
 			url : "side_product_List.jsp",
