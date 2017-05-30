@@ -14,6 +14,7 @@
 
 <script type="text/javascript">
 
+	var sideMenu = 0;
 
 	$(document).ready(function() {
 
@@ -26,7 +27,6 @@
 
 	$(document).on('click', 'input', function() {
 		var side = $(this).val();
-		var sideMenu = 0;
 		var htmlText = '';
 		if (side.match("빵")) {
 			sideMenu = 1;
@@ -53,12 +53,11 @@
 				}
 				$("#content").load("product_List.jsp", function(responseTxt, statusTxt, xhr) {
 					if (statusTxt == "success")
-						//$('table > tbody').html(htmlText);  
 						$('#div3').html(htmlText);
 					if (statusTxt == "error")
 						alert("Error: " + xhr.status + ": " + xhr.statusText);
 				});
-				$('#div3').html(htmlText);
+				//$('#div3').html(htmlText);
 			},
 			complete : function(data) {
 			},
@@ -86,6 +85,41 @@
 
 	$(document).on('click', '#sideMenu', function() {
 		$(".input").toggle();
+	});
+	
+	$(document).on('click', '.pagination > a', function() {
+		var crr_page = $(this).text();
+		var htmlText = '';
+		alert("선택한 페이지 : "+crr_page+" ,@@ : "+sideMenu);
+		$.ajax({
+			type : "post",
+			url : "side_product_List.jsp",
+			data : {
+				sideMenu : sideMenu,
+				crr_page : crr_page
+			},
+			dataType : "json",
+			success : function(data) {
+				for (var i = 0; i < data.length; i++) {
+					htmlText += "<div class=\"gallery\" id=\"" + data[i].item_no + " \">"
+						+ "<img src=\"../product_Img/" + data[i].item_name + ".jpg\" alt=\"" + data[i].item_name + "\"  width=\"600\"  height=\"400\"> "
+						+ "<div class=\"desc\">"+"번호 : " + data[i].item_no + "\t 가격 : " + data[i].item_userPrice + "</div>"
+						+ "</div>";
+				}
+				$("#content").load("product_List.jsp", function(responseTxt, statusTxt, xhr) {
+					if (statusTxt == "success")
+						$('#div3').html(htmlText);
+					if (statusTxt == "error")
+						alert("Error: " + xhr.status + ": " + xhr.statusText);
+				});
+			},
+			complete : function(data) {
+			},
+			error : function(xhr, status, error) {
+				console.log("에러!: " + error);
+				console.log("상태" + status);
+			},
+		});
 	});
 </script>
 <title>Insert title here</title>

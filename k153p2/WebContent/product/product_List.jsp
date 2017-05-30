@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/paging.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 div.gallery {
 	margin: 5px;
@@ -35,4 +38,20 @@ a.pagings-item.selected {
 }
 </style>
 
+	<%System.out.println("총 페이지 수@@@@ :"+session.getAttribute("totPage")); %>
 <div id="div3"></div>
+<br>
+<br>
+<br>
+<div class="pagination">
+ 	<a href="#">&laquo;</a>
+	<c:forEach var="i" begin="1" end="${totPage }">
+		<c:if test="${i ==crr_page}">
+			<a href="#" class="active" >${i}</a>
+		</c:if>
+		<c:if test="${i !=page}">
+			  <a href="#">${i}</a>
+		</c:if>
+	</c:forEach>
+  <a href="#">&raquo;</a>
+</div>

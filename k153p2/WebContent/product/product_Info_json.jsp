@@ -17,7 +17,7 @@
 		jsonObj.put("item_no", info.getItem_no());
 		jsonObj.put("item_name", info.getItem_name());
 		jsonObj.put("item_userPrice", info.getItem_userPrice());
-		jsonObj.put("item_type", info.getItem_type());
+		jsonObj.put("item_type", info.getItemtype_no());
 	String str = jsonObj.toString();
 
 	out.print(str);
