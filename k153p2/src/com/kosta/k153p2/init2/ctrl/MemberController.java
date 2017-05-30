@@ -45,13 +45,12 @@ public class MemberController extends HttpServlet{
 				req.getRequestDispatcher("/init2/start.jsp").forward(req, resp);
 			}
 		}else if(action.equals("beginning")){
-			MemberInfoDAO dao = new MemberInfoDAO();
 			MemberInfo member = new MemberInfo();
 			
-			member = dao.selectLogin(req.getParameter("id"));
+			member = new MemberInfoDAO().selectLogin(req.getParameter("id"));
 			
 			if(member.getMember_id().equals(req.getParameter("id")) && member.getMember_pass().equals(req.getParameter("pass"))){ //로그인성공!
-				req.getSession().setAttribute("member",member);	//로그인성공후 세션부여
+				req.getSession().setAttribute("login",req.getParameter("id"));	//로그인성공후 세션부여
 				req.getRequestDispatcher("/init2/beginning.jsp").forward(req, resp);
 			}
 		}else if(action.equals("memberinfo")){
@@ -59,25 +58,8 @@ public class MemberController extends HttpServlet{
 		}else if(action.equals("memberupdate")){
 			req.getRequestDispatcher("/init2/memberUpdate.jsp").forward(req, resp);
 		}else if(action.equals("duplicate")){
-			String id = req.getParameter("id");
-			System.out.println(id);
-			if(id==null){// 입력된 아이디가  null이면 다시 중복확인창으로 -- > 나중에 이건 유효성 검사로 돌려서 alert하기!
-				req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);
-			}else{
-				MemberInfoDAO dao = new MemberInfoDAO();
-				boolean flag = dao.checkId(id);
-					if(flag){//사용불가하면!
-						req.setAttribute("msg", "이미 존재하는 아이디입니다!");
-					}else{// 검색한결과 null(?)이면(겹치는게 없어서) 사용가능하면!!
-						req.setAttribute("msg", "사용가능한 아이디입니다!");
-						resp.getWriter().print("<script>confirm('사용가능한 아이디입니다!사용하시겠습니까?');</script>");
-					}						
-					req.getRequestDispatcher("/init2/checkId.jsp").forward(req, resp);
-			}
-			
-			
-			
-			
+			req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);
+		
 		}else if(action.equals("leave")){
 			MemberInfo memberinfo =(MemberInfo) req.getSession().getAttribute("member");
 			String id =memberinfo.getMember_id();

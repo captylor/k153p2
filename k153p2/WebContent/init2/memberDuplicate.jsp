@@ -28,7 +28,7 @@
 						if(!idPattern.test(id)){
 							alert('ID는 영문자를 시작으로하는 6~10자리로 작성해 주세요!!');
 						}else if(htmlText.match("사용가능")){
-							var ynn=confirm("사용 가능한 아이디입니다 :) 사용하시겠습니까?");
+							var ynn=confirm(id+"는 사용 가능한 아이디입니다 :) 사용하시겠습니까?");
 							if(ynn){
 								opener.document.frm.id.value=id;
 								self.close();
