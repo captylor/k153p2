@@ -15,7 +15,6 @@
 	//선택한 사이드 메뉴에 따른 제품 정보 json으로 보여줌
 	session.removeAttribute("totPage");
 	session.removeAttribute("crr_page");
-	session.removeAttribute("sideM");
 	
 	
 	ItemInfoDao dao = new ItemInfoDao();
@@ -40,7 +39,6 @@
 	}
 	session.setAttribute("totPage", totPage);
 	session.setAttribute("crr_page", crr_page);
-	session.setAttribute("sideM", sideM);
 	
 	List<ItemInfo> returnList = dao.selectMenu(sideM);//걍 사이드 메뉴에 따른 출력
 	returnList = dao.selectPage(crr_page, recordCount, sideM);//페이징용 으로 출력
