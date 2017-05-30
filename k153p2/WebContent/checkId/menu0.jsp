@@ -14,9 +14,9 @@
 	<tr>
 	<td align='right'>
 	<div id='menudiv1' style="display: '';">
-	<a href='intro.do'>소개</a>
+	<a href='/k153p2/intro.do'>소개</a>
 	<br/>
-	<a href='intro.do?year=2017'>연혁</a>
+	<a href='/k153p2/intro.do?year=2017'>연혁</a>
 	</div>
 	</td>
 	</tr>
