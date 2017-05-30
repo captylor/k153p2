@@ -37,8 +37,6 @@ a.pagings-item.selected {
 	font-weight: bold;
 }
 </style>
-
-	<%System.out.println("총 페이지 수@@@@ :"+session.getAttribute("totPage")); %>
 <div id="div3"></div>
 <br>
 <br>
@@ -49,7 +47,7 @@ a.pagings-item.selected {
 		<c:if test="${i ==crr_page}">
 			<a href="#" class="active" >${i}</a>
 		</c:if>
-		<c:if test="${i !=page}">
+		<c:if test="${i !=crr_page}">
 			  <a href="#">${i}</a>
 		</c:if>
 	</c:forEach>

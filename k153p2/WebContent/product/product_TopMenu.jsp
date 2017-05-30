@@ -39,7 +39,7 @@ li a :hover:not (.active ){
 		<li><a href="#signUp" id="signUp">회원가입</a></li>
 	</ul>
 	<ul>
-		<li style="float: left"><a class="active" href="#about" id="home">Happy
+		<li style="float: left"><a class="active" href="/k153p2/intro.do" id="home">Happy
 				Cafe</a></li>
 		<li><a href="/k153p2/item.do?itemMenu=true" id="page1">제품</a></li>
 		<li><a href="#st" id="page2">매장 찾기</a></li>
