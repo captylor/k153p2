@@ -7,11 +7,40 @@
 .line{border-bottom:1px solid;}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+var bg = new Array();
+bg[0] = "까페1.png";
+bg[1] = "까페2.png";
+bg[2] = "까페3.png";
+
+var table_change_time = 2000; //테이블 배경이미지 변경시간
+var table_change_id = 'table001_id';  // 테이블에 지정된 id='table001_id' 부분의 id값으로 지정
+
+function change_table_background()
+{
+ var now = new Date();
+ var sec = now.getSeconds() % bg.length;
+
+ var table_obj = document.getElementById(table_change_id);
+
+ if ( table_obj )
+ {
+  table_obj.style.background = 'url('+bg[sec]+')';
+  setTimeout("change_table_background()",table_change_time);
+ }
+}
+</script>
 <title>Insert title here</title>
 </head>
-<body>
+<body onLoad="change_table_background()">
+<table text='b2222' link='000000' vlink='0000aa' width='100%' height='300' id='table001_id'>
+<tr>
+	<td height="100" width="100" align="center"><span class="style1"></span></td>
+</tr>
+
+</table>
 <center>
-<img src="${pageContext.request.contextPath}/checkId/가맹안내.jpg" width='800'><br>
+<img src="${pageContext.request.contextPath}/init/가맹안내.jpg" width='800'><br>
 </center>
 <center>
 <h1><Strong>가맹점 개설비용</Strong></h1><hr>
