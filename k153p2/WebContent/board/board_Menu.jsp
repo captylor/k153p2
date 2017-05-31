@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <style>
-.input[type=button] {
+.inputB[type=button] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -19,6 +19,6 @@ button{
 <button id="sideMenu">
 	<span style="font-size: 1.5em; color: green;">게시판 </span>
 </button>
-<input type="button" value="자유게시판" id="freeB" class="input">
+<input type="button" value="자유게시판" id="freeB" class="inputB">
 <br>
-<input type="button" value="관리자게시팜" id="adminB" class="input">
+<input type="button" value="관리자게시팜" id="adminB" class="inputB">
