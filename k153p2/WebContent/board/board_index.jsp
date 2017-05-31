@@ -99,6 +99,8 @@
 	$(document).on('click', '.td3', function() {//내용 클릭
 		var pl = $(this).text();
 		alert(pl);
+		//https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_slide_toggle
+		//ajax써서 값 가져오고
 	});
 </script>
 <title>게시판</title>
