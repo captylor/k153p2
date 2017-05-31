@@ -14,7 +14,7 @@
 		<th width="20%"><a href=/k153p2/item.do><font color='000000'>제품</font></a></th>
 		<th width="20%"><a href='/TomTest/find_store.do'><font color='000000'>매장찾기</font></a></th>
 		<th width="20%"><a href='/TomTest/manage_store.do'><font color='000000'>매장관리</font></a></th>
-		<th width="20%"><a href='/TomTest/board.do'><font color='000000'>게시판</font></a></th>
+		<th width="20%"><a href='/k153p2/boardinfo.do'><font color='000000'>게시판</font></a></th>
 	</tr>
 </table>
 </body>

@@ -1,8 +1,8 @@
+<%@page import="com.kosta.k153p2.board.dto.BoardInfo"%>
+<%@page import="com.kosta.k153p2.board.dao.BoardInfoDao"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
-<%@page import="com.kosta.k153p2.board.dto.BoardInfo"%>
 <%@page import="java.util.List"%>
-<%@page import="com.kosta.k153p2.board.dao.BoardInfoDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%

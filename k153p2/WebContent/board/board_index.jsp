@@ -32,10 +32,11 @@
 						htmlText += "<tr>"
 							+ "<td class=\"td1\">" + data[i].b_no + "</td>"
 							+ "<td class=\"td2\">" + data[i].b_id + "</td>"
-							+ "<td class=\"td3\">" + data[i].b_title + "</td>"
+							+ "<td id=\"" + data[i].b_no + "\" class=\"td3\">" + data[i].b_title + "</td>"
 							+ "<td class=\"td2\">" + data[i].b_firstD + "</td>"
 							+ "<td class=\"td2\">" + data[i].b_lastD + "</td>"
-							+ "</tr>";
+							+ "</tr>"
+							+ "<tr><td colspan=5 id=\"conTxt_" + data[i].b_no + "\"  class=\"panel\"></td></tr>";
 					}
 					$("#content").load("freeB_list.jsp", function(responseTxt, statusTxt, xhr) {
 						if (statusTxt == "success")
@@ -67,10 +68,11 @@
 					htmlText += "<tr>"
 						+ "<td class=\"td1\">" + data[i].b_no + "</td>"
 						+ "<td class=\"td2\">" + data[i].b_id + "</td>"
-						+ "<td class=\"td3\">" + data[i].b_title + "</td>"
+						+ "<td id=\"" + data[i].b_no + "\" class=\"td3\">" + data[i].b_title + "</td>"
 						+ "<td class=\"td2\">" + data[i].b_firstD + "</td>"
 						+ "<td class=\"td2\">" + data[i].b_lastD + "</td>"
-						+ "</tr>";
+						+ "</tr>"
+						+ "<tr><td colspan=5 id=\"conTxt_" + data[i].b_no + "\"  class=\"panel\"></td></tr>";
 				}
 				$("#content").load("freeB_list.jsp", function(responseTxt, statusTxt, xhr) {
 					if (statusTxt == "success")
@@ -83,24 +85,47 @@
 			error : function(xhr, status, error) {
 				console.log("에러!: " + error);
 				console.log("상태" + status);
-			},
+			}
 		});
 	});
 
 	$(document).on('click', '#writingBt', function() {
 		//로그인한 세션이 있다면
 		var w = 500;
-		var h = 300;//Update  폼은 350
+		var h = 300; //Update  폼은 350
 		var left = (screen.width / 2) - (w / 2);
 		var top = (screen.height / 2) - (h / 2);
 		window.open("board_Free_Input.jsp", "글쓰기", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 	});
-	
-	$(document).on('click', '.td3', function() {//내용 클릭
-		var pl = $(this).text();
-		alert(pl);
-		//https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_slide_toggle
+
+	$(document).on('click', '.td3', function() { //게시판 제목을 클릭
+		var article_no = $(this).attr("id");
+		var conTxt = "conTxt_" + article_no;
 		//ajax써서 값 가져오고
+		$.ajax({
+			url : "conTxt_json.jsp",
+			dataType : "json",
+			data : {
+				article_no : article_no
+			},
+			success : function(data) {
+				$("#conTxt_" + article_no).html(data.b_conTxt);
+				$("#conTxt_" + article_no).slideToggle("slow");
+			},
+			error : function(xhr, status, error) {
+				console.log("에러!: " + error);
+				console.log("상태" + status);
+			}
+		});
+	});
+
+	$(document).on('click', ".panel", function() { // 게시판 본문을 클릭
+		var article_no = $(this).attr("id").substring(7);
+		var w = 500;
+		var h = 370; //Update  폼은 350
+		var left = (screen.width / 2) - (w / 2);
+		var top = (screen.height / 2) - (h / 2);
+		var updataForm = window.open("board_Free_Update.jsp?no="+article_no, "글쓰기", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 	});
 </script>
 <title>게시판</title>

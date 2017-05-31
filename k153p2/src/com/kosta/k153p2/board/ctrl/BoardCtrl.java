@@ -21,13 +21,13 @@ public class BoardCtrl extends HttpServlet {
 		req.getSession().setAttribute("login", "member411");
 		req.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
-		
-		String board= req.getParameter("board");
-		if(board ==null){
+
+		String board = req.getParameter("board");
+		if (board == null) {
 			resp.sendRedirect("/k153p2/board/board_index.jsp");
 		}
 		String freeinfo = req.getParameter("freeInfo");
-		if(freeinfo != null){
+		if (freeinfo != null) {// 글쓰기
 			BoardInfoDao dao = new BoardInfoDao();
 			String title = req.getParameter("board_title");
 			String context = req.getParameter("board_text");
@@ -38,6 +38,30 @@ public class BoardCtrl extends HttpServlet {
 			info.setBoard_text(context);
 			dao.insert(info);
 			out.print("<script>window.self.close();</script>");
+		}
+		String update = req.getParameter("update");
+		if (update != null) {// 글 수정
+			BoardInfoDao dao = new BoardInfoDao();
+			BoardInfo info = new BoardInfo();
+			info.setBoard_no(Integer.parseInt(req.getParameter("board_no")));
+			info.setBoard_title(req.getParameter("board_title"));
+			info.setBoard_text(req.getParameter("board_text"));
+			boolean result = dao.update(info);
+			if(result){
+				out.print("<script>window.opener.location.reload(); window.self.close();</script>");				
+			}else{
+				out.print("<h1>수정이 실패하였습니다</h1>");
+			}
+		}
+		String delete = req.getParameter("delete");
+		if(delete != null){
+			BoardInfoDao dao = new BoardInfoDao();
+			boolean result = dao.delete(Integer.parseInt(req.getParameter("board_no")));
+			if(result){
+				out.print("<script>window.opener.location.reload(); window.self.close();</script>");				
+			}else{
+				out.print("<h1>삭제 실패하였습니다</h1>");
+			}
 		}
 
 	}// service
