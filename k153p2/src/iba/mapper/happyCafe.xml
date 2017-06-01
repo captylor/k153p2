@@ -3,15 +3,24 @@
 <!-- happyCafe.xml -->
 <sqlMap namespace="happyCafe">
 	<insert id="insert" parameterClass="com.kosta.k153p2.init2.dto.MemberInfo">
-		insert into memberInfo(member_id,member_pass,member_name,member_email,member_grade,member_icon) 
-					values (#member_id#,#member_pass#,#member_name#,#member_email#,#member_grade#,#member_icon#)
+		insert into memberInfo(member_id,member_pass,member_name,member_email,member_icon) 
+					values (#member_id#,#member_pass#,#member_name#,#member_email#,#member_icon#)
 	</insert>
 	
-	<select id="selectlogin" parameterClass="String" resultClass="com.kosta.k153p2.init2.dto.MemberInfo">
+	<select id="selectlogin" parameterClass="java.util.Map" resultClass="int">
+		select count(*)
+		from memberInfo 
+		where member_id = #member_id#
+		and   member_pass = #member_pass#
+	</select>
+	
+	<select id="selectinfo" parameterClass="String" resultClass="com.kosta.k153p2.init2.dto.MemberInfo">
 		select member_id,member_pass,member_name,member_email,member_grade
 		from memberInfo 
-		where member_id = #id#
+		where member_id = #member_id#
 	</select>
+	
+	
 	
 	<delete id="delete" parameterClass="String">
 		delete from memberInfo 

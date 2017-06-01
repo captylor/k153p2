@@ -1,6 +1,8 @@
 package com.kosta.k153p2.init2.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -47,10 +49,23 @@ public class MemberInfoDAO {
 		return false;
 	}//delete
 	
-	public MemberInfo selectLogin(String id){
-		MemberInfo member = null;
+	public boolean selectLogin(String id,String pass){
+		Map<String, String> map = new HashMap<>();
+		map.put("member_id", id);
+		map.put("member_pass", pass);
 		try {
-			member = (MemberInfo) sqlMap.queryForObject("happyCafe.selectlogin",id);
+			int t = (int) sqlMap.queryForObject("happyCafe.selectlogin",map);
+			if(t==1) return true;  //1--> id,pass 일치! 로그인성공!
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//selectlogin
+	
+	public MemberInfo selectinfo(String id){
+		MemberInfo member = new MemberInfo();
+		try {
+			member = (MemberInfo) sqlMap.queryForObject("happyCafe.selectinfo",id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

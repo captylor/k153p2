@@ -36,14 +36,7 @@
 						}else{
 							$('#d1').html(htmlText);
 						}
-							
-			},
-			complete : function(data) {
-			},
-			error : function(xhr, status, error) {
-				console.log("에러!: " + error);
-				console.log("상태" + status);
-			},
+			}
 		});
 	});
 </script>

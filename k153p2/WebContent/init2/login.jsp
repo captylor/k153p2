@@ -11,43 +11,29 @@
 		
 		location.href="member.do?action=join";
 	}
-	function login(){
-		
-		location.href="member.do?action=beginning";
-	}
 	 $(document).on('click', '#login', function() {
-		var id = $('#id').val();
-		var pass = $('#pass').val();
-		var htmlText = '';
-		
-		
 		$.ajax({
-			type : "post",
 			url : "/k153p2/init2/result2.jsp",
+			type : "post",
 			data : {
-				id : id
-			},
-			
-			dataType : "html",
-			success : function(data) {
-					htmlText += data;
-							alert(htmlText);
-						if(htmlText.match("로그인성공")){
-							login();
+				id : $('#id').val(),
+				pass : $('#pass').val()
+			},			
+			//dataType : "html",
+			success : function(result) {
+						if(result.match("로그인성공")){
+							document.frm.submit();
+							
 						}else{
-							htmlText="<font>아이디와 비밀번호를 확인후 입력해 주세요</font>"
+							result="<font color=red>아이디가 존재하지 않거나,<br> 비밀번호가 일치하지 않습니다.</font>"
+							document.frm.id.value='';
+							document.frm.pass.value='';
 							
-							$('#d1').html(htmlText);
-						}
-							
-							 
-			},
-			complete : function(data) {
-			},
-			error : function(xhr, status, error) {
-				console.log("에러!: " + error);
-				console.log("상태" + status);
-			},
+							$('#d1').html(result);
+						} 
+			}
+			
+			
 		});
 	});
 </script>
@@ -56,7 +42,7 @@
 <body>
 	<center>
 		<font size="20">로그인</font><br> <br>
-		<form method="post">
+		<form method="post" name="frm" action="member.do?action=beginning">
 			<table cellpadding="5">
 			<tr>
 				<td align="right">I D :</td>
@@ -69,7 +55,8 @@
 			
 			<tr>
 				<td></td>
-				<td><input type="button" value="확인" id="login"> <input type="button" value="회원가입" onclick="join()"><div id=d1>asd</div></td>
+				<td><input type="button" value="확인" id="login"> <input type="button" value="회원가입" onclick="join()"> 
+				<div id=d1></div></td>
 				
 			</tr>
 			

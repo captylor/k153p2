@@ -11,7 +11,8 @@
 	
 	    <%--happyCafe이미지  --%>
 	<br><br>
-	<b>HappyCafe에 오신것을 진심으로 환영합니다!!<b>
+	<b>HappyCafe에 오신것을 진심으로 환영합니다!!<b><br>
+	
 	<a href="member.do?action=memberinfo">정보보기</a>
 
 </body>

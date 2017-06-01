@@ -45,15 +45,15 @@ public class MemberController extends HttpServlet{
 				req.getRequestDispatcher("/init2/start.jsp").forward(req, resp);
 			}
 		}else if(action.equals("beginning")){
-			MemberInfo member = new MemberInfo();
+			req.getSession().setAttribute("login",req.getParameter("id"));	//로그인성공후 세션부여 
+
+			req.getRequestDispatcher("/init2/beginning.jsp").forward(req, resp);
 			
-			member = new MemberInfoDAO().selectLogin(req.getParameter("id"));
-			
-			if(member.getMember_id().equals(req.getParameter("id")) && member.getMember_pass().equals(req.getParameter("pass"))){ //로그인성공!
-				req.getSession().setAttribute("login",req.getParameter("id"));	//로그인성공후 세션부여
-				req.getRequestDispatcher("/init2/beginning.jsp").forward(req, resp);
-			}
 		}else if(action.equals("memberinfo")){
+			String id = (String) req.getSession().getAttribute("login");
+			MemberInfoDAO dao = new MemberInfoDAO();
+			MemberInfo member = dao.selectinfo(id);
+			req.setAttribute("member", member);
 			req.getRequestDispatcher("/init2/memberInfoview.jsp").forward(req, resp);
 		}else if(action.equals("memberupdate")){
 			req.getRequestDispatcher("/init2/memberUpdate.jsp").forward(req, resp);
@@ -61,8 +61,7 @@ public class MemberController extends HttpServlet{
 			req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);
 		
 		}else if(action.equals("leave")){
-			MemberInfo memberinfo =(MemberInfo) req.getSession().getAttribute("member");
-			String id =memberinfo.getMember_id();
+			String id = (String) req.getSession().getAttribute("login");
 				MemberInfoDAO dao = new MemberInfoDAO();
 			   if(dao.delete(id)){//삭제성공
 				   resp.sendRedirect("member.do");
