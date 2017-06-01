@@ -16,11 +16,10 @@
 	<div id='menudiv1' style="display: '';">
 	<a href='/k153p2/intro.do'>소개</a>
 	<br/>
-	<a href='/k153p2/intro.do?year=2017'>연혁</a>
+	<a href='/k153p2/intro.do?sideM=0&year=2017'>연혁</a>
 	</div>
 	</td>
 	</tr>
-	
 	
 	
 	

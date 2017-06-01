@@ -58,3 +58,4 @@ if(document.getElementById(x).style.display==''){
 <%-- <img src="${pageContext.request.contextPath}/checkId/happp.jpg" width='500'><br> --%>
 <!-- 대한민국에서 가장 특별한 커피 연구소~! HappyCafe에서<br> -->
 <!-- 여러분에게 더욱 큰 행복을 주기위해 노력하겠습니다!! -->
+

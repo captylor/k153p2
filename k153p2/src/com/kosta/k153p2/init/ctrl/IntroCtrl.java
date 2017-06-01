@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 public class IntroCtrl extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("/init/introduce.jsp").forward(req, resp);
+		
+		String sideM = req.getParameter("sideM");
+		if(sideM ==null){
+			req.getRequestDispatcher("/init/introduce.jsp").forward(req, resp);			
+		}
 		String year = req.getParameter("year");
 		if (year != null && year.equals("2017")) {
 			req.getRequestDispatcher("/init/year.jsp").forward(req, resp);
