@@ -127,6 +127,10 @@
 		var top = (screen.height / 2) - (h / 2);
 		var updataForm = window.open("board_Free_Update.jsp?no="+article_no, "글쓰기", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 	});
+	
+	$(document).on('click', '#sideMenu', function() {// 토글기능
+		$(".inputB").toggle();
+	});
 </script>
 <title>게시판</title>
 </head>

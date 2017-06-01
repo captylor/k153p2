@@ -83,7 +83,7 @@
 		var iteminfoPOP = window.open("./product_Info.jsp?product="+dbId, "popup", "width=" + popWidth + "px,height=" + popHeight + "px,top=" + popY + ",left=" + popX);
 	});
 
-	$(document).on('click', '#sideMenu', function() {
+	$(document).on('click', '#sideMenu', function() {//토글기능
 		$(".input").toggle();
 	});
 	

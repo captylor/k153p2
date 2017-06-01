@@ -15,11 +15,7 @@ public class IntroCtrl extends HttpServlet {
 		
 		String sideM = req.getParameter("sideM");
 		if(sideM ==null){
-			req.getRequestDispatcher("/init/introduce.jsp").forward(req, resp);			
-		}
-		String year = req.getParameter("year");
-		if (year != null && year.equals("2017")) {
-			req.getRequestDispatcher("/init/year.jsp").forward(req, resp);
+			req.getRequestDispatcher("/init/init_index.jsp").forward(req, resp);	
 		}
 	}
 

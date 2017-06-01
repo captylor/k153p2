@@ -17,8 +17,8 @@ button{
 </style>
 
 <button id="sideMenu">
-	<span style="font-size: 1.5em; color: green;">메뉴</span>
+	<span style="font-size: 1.5em; color: green;">Happy Cafe</span>
 </button>
-<input type="button" value="빵" id="bread" class="input">
+<input type="button" value="소개" id="intro" class="input">
 <br>
-<input type="button" value="음료" id="drink" class="input">
+<input type="button" value="연혁" id="history" class="input">
