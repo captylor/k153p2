@@ -13,7 +13,7 @@ bg[0] = "까페1.png";
 bg[1] = "까페2.png";
 bg[2] = "까페3.png";
 
-var table_change_time = 2000; //테이블 배경이미지 변경시간
+var table_change_time = 1500; //테이블 배경이미지 변경시간
 var table_change_id = 'table001_id';  // 테이블에 지정된 id='table001_id' 부분의 id값으로 지정
 
 function change_table_background()
