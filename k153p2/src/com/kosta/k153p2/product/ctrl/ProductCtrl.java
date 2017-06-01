@@ -16,7 +16,7 @@ import com.kosta.k153p2.product.dto.ItemInfo;
 import sun.rmi.server.Dispatcher;
 
 @WebServlet("/item.do")
-public class productCtrl extends HttpServlet {
+public class ProductCtrl extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
