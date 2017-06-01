@@ -46,27 +46,29 @@ public class MemberController extends HttpServlet{
 			}
 		}else if(action.equals("beginning")){
 			req.getSession().setAttribute("login",req.getParameter("id"));	//로그인성공후 세션부여 
-
 			req.getRequestDispatcher("/init2/beginning.jsp").forward(req, resp);
 			
 		}else if(action.equals("memberinfo")){
-			String id = (String) req.getSession().getAttribute("login");
+			String id = (String) req.getSession().getAttribute("login");    //세션값이 두번 들어가도 될까?
 			MemberInfoDAO dao = new MemberInfoDAO();
 			MemberInfo member = dao.selectinfo(id);
 			req.setAttribute("member", member);
 			req.getRequestDispatcher("/init2/memberInfoview.jsp").forward(req, resp);
 		}else if(action.equals("memberupdate")){
+			String id = (String) req.getSession().getAttribute("login");    //세션값이 두번 들어가도 될까?
+			MemberInfoDAO dao = new MemberInfoDAO();
+			MemberInfo member = dao.selectinfo(id);
+			req.setAttribute("member", member);
 			req.getRequestDispatcher("/init2/memberUpdate.jsp").forward(req, resp);
 		}else if(action.equals("duplicate")){
-			req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);
-		
+			req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);		
 		}else if(action.equals("leave")){
 			String id = (String) req.getSession().getAttribute("login");
 				MemberInfoDAO dao = new MemberInfoDAO();
 			   if(dao.delete(id)){//삭제성공
 				   resp.sendRedirect("member.do");
 			   }else{//탈퇴가 안되었다면
-				  
+				   
 			   }
 		}else if(action.equals("updateinfo")){
 			MemberInfo member = new MemberInfo();

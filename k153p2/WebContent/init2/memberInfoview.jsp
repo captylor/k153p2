@@ -9,8 +9,6 @@
 </head>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-수정부터다시하기!!!!!	수정부터다시하기!!!!!	수정부터다시하기!!!!!	수정부터다시하기!!!!!	수정부터다시하기!!!!!	수정부터다시하기!!!!!	수정부터다시하기!!!!!	수정부터다시하기!!!!!	
-
 	function leave(){
 		var passcheck = prompt('탈퇴하시려면 비밀번호를 입력하세요');
 		if(passcheck==='${member.member_pass }'){
@@ -24,16 +22,14 @@
 		}else{
 			alert("비밀번호가 일치하지 않습니다!!");
 		}
-
-		
 	}
 </script>
 <%--memberUpview.jsp --%>
 <body>
 	<center>
 		<font size="20">정보보기</font><br> <br>
-		<table cellpadding="5">
-			<form action="member.do?action=memberupdate" method="post">
+		<form action="member.do?action=memberupdate" method="post">
+			<table cellpadding="5">
 			<tr>
 				<td align="right">I D :</td>
 				<td><input type="text" size="20" readonly="readonly" value="${member.member_id }" style="border:0;"></td>
