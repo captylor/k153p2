@@ -11,17 +11,10 @@
 	<tr><th colspan="5"><h1>Happy Cafe</h1></th></tr>
 	<tr>
 		<th width="20%"><a href='/k153p2/intro.do'><font color='000000'>Happy Cafe</font></a></th>
-<<<<<<< HEAD:k153p2/WebContent/checkId/head0.jsp
 		<th width="20%"><a href='/k153p2/item.do?itemMenu=true'><font color='000000'>제품</font></a></th>
 		<th width="20%"><a href='/k153p2/find_store.do'><font color='000000'>매장찾기</font></a></th>
 		<th width="20%"><a href='/k153p2/manage_store.do'><font color='000000'>매장관리</font></a></th>
 		<th width="20%"><a href='/k153p2/board.do'><font color='000000'>게시판</font></a></th>
-=======
-		<th width="20%"><a href=/k153p2/item.do><font color='000000'>제품</font></a></th>
-		<th width="20%"><a href='/TomTest/find_store.do'><font color='000000'>매장찾기</font></a></th>
-		<th width="20%"><a href='/TomTest/manage_store.do'><font color='000000'>매장관리</font></a></th>
-		<th width="20%"><a href='/TomTest/board.do'><font color='000000'>게시판</font></a></th>
->>>>>>> 5509635b8d4221c6695d0979b2825b38b09aba66:k153p2/WebContent/init/head0.jsp
 	</tr>
 </table>
 </body>

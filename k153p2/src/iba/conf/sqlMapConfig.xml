@@ -17,7 +17,8 @@
 	</transactionManager>
 	<!-- sql문들이 저장되어 있는 xml을 등록 -->
 
-	<sqlMap resource="./iba/mapper/productSql.xml" />
+	<sqlMap resource="./iba/mapper/productSql.xml" /><!-- 아아템  -->
 	<sqlMap resource="./iba/mapper/duple.xml" />
-	
+	<sqlMap resource="./iba/mapper/board.xml" />
+
 </sqlMapConfig>

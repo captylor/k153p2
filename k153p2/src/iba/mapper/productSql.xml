@@ -5,5 +5,28 @@
 	<select id="selectAll" resultClass="com.kosta.k153p2.product.dto.ItemInfo">
 		select * from ITEMINFO
 	</select>
-	
+
+	<select id="selMenu" resultClass="com.kosta.k153p2.product.dto.ItemInfo"
+		parameterClass="int">
+		select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO 
+		from ITEMINFO where ITEMTYPE_NO=#value#
+	</select><!-- 사이드 메뉴에서 빵 또는 음료를 클릭했을때 -->
+
+	<select id="eachItem" resultClass="com.kosta.k153p2.product.dto.ItemInfo"
+		parameterClass="int">
+		select * from ITEMINFO where ITEM_NO=#value#
+	</select>
+
+	<select id="count" resultClass="int" parameterClass="int">
+		select count(*) from iteminfo where ITEMTYPE_NO=#value#
+	</select>
+
+	<select id="selectPage" resultClass="com.kosta.k153p2.product.dto.ItemInfo"><![CDATA[
+		select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO 
+		from (select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO,rownum rn
+				from (select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO 
+						from iteminfo where ITEMTYPE_NO =#sideM# order by ITEM_NO desc)
+				) 
+		where rn between #start# and #end#]]>
+	</select>
 </sqlMap>

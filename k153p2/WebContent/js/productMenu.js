@@ -12,3 +12,4 @@ function side_loaded() { //콜백
 		content.innerHTML = str;
 	}
 }	
+

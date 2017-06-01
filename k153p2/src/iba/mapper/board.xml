@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- guest.xml -->
+<sqlMap namespace="boardinfo">
+  <typeAlias alias="boardinfo" type="com.kosta.k153p2.board.dto.BoardInfo"/>
+
+  <insert id="insert" parameterClass="boardinfo">
+     insert into boardinfo (board_no,member_id ,board_title,board_text,board_date)
+               values (boardinfo_seq.nextval, #member_id#, #board_title#,
+                       #board_text#,sysdate)
+  </insert>
+
+  <select id="selectAll" resultClass="boardinfo">
+     select board_no,member_id,board_title,board_date
+     from boardinfo
+     order by board_no desc
+  </select>
+  
+   <select id="count" resultClass="int">
+       select count(*) from boardinfo
+   </select>
+   
+   <select id="selectPage" resultClass="boardinfo" parameterClass="java.util.Map"><![CDATA[
+     select board_no,member_id,board_title, board_text, board_date, board_lastupdate
+     from (select  board_no,member_id,board_title, board_text, board_date, board_lastupdate, rownum rn
+           from (select  board_no,member_id,board_title, board_text, board_date, board_lastupdate
+		         from boardinfo
+		         order by board_no desc)
+		  )
+     where rn between #start# and #end#
+  ]]></select>
+  
+  <!-- 수정폼에 출력할 데이터 조회 -->
+  <select id="select" parameterClass="int" resultClass="boardinfo">
+      select  board_no, member_id, board_title, board_text
+      from boardinfo
+      where board_no=#value#
+  </select>
+  
+    <!-- 수정폼에 변경된 데이터를 update -->
+  <update id="update" parameterClass="boardinfo">
+      update boardinfo set board_text=#board_text#,board_title=#board_title#
+      where board_no=#board_no#
+  </update>
+  
+  <delete id="delete_child" parameterClass="int">
+     delete from replyinfo
+     where board_no=#value#
+  </delete>
+  
+  <!-- 특정 글번호에 대한 삭제 -->
+  <delete id="delete" parameterClass="int">
+     delete from boardinfo
+     where board_no=#value#
+  </delete>
+  
+  
+</sqlMap>
+
+
+
+
+
+
+
