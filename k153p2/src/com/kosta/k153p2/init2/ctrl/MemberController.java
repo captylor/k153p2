@@ -38,8 +38,6 @@ public class MemberController extends HttpServlet{
 				member.setMember_name(name);
 				member.setMember_email(email);
 				
-				
-				
 			MemberInfoDAO dao = new MemberInfoDAO();
 			if(dao.insert(member)){
 				req.getRequestDispatcher("/init2/start.jsp").forward(req, resp);
@@ -60,36 +58,35 @@ public class MemberController extends HttpServlet{
 			MemberInfo member = dao.selectinfo(id);
 			req.setAttribute("member", member);
 			req.getRequestDispatcher("/init2/memberUpdate.jsp").forward(req, resp);
-		}else if(action.equals("duplicate")){
-			req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);		
-		}else if(action.equals("leave")){
-			String id = (String) req.getSession().getAttribute("login");
-				MemberInfoDAO dao = new MemberInfoDAO();
-			   if(dao.delete(id)){//삭제성공
-				   resp.sendRedirect("member.do");
-			   }else{//탈퇴가 안되었다면
-				   
-			   }
-		}else if(action.equals("updateinfo")){
+		}else if(action.equals("updateEnd")){
 			MemberInfo member = new MemberInfo();
 			member.setMember_id(req.getParameter("id"));
 			member.setMember_pass(req.getParameter("pass"));
 			member.setMember_name(req.getParameter("name"));
 			member.setMember_email(req.getParameter("email"));
-			member.setMember_grade(req.getParameter("grade"));
 			
-			
-			MemberInfoDAO dao = new MemberInfoDAO();
-			if(dao.update(member)){//수정성공이라면   이거도 미구현
+			MemberInfoDAO dao = new MemberInfoDAO();					
+			dao.update(member);
+			if(dao.update(member)){//수정성공이라면
 				req.getSession().invalidate();
-				req.setAttribute("msg", "정보가 수정되었습니다. <br> 다시 로그인 해주세요");
-				resp.sendRedirect("member.do");
-			}else{//수정 안되었다면
-				req.setAttribute("msg", "정보수정이 실패하였습니다.");
+				resp.sendRedirect("member.do?action=login");//마지막에 스크립트에서 로케이선href로 보내고 여기서는 세션 해제
 			}
+			
+			
+		}else if(action.equals("duplicate")){
+			req.getRequestDispatcher("/init2/memberDuplicate.jsp").forward(req, resp);		
+		}else if(action.equals("leave")){						
+			String id = (String) req.getSession().getAttribute("login");
+				MemberInfoDAO dao = new MemberInfoDAO();
+			   if(dao.delete(id)){//삭제성공
+				   req.getSession().invalidate();
+				   resp.sendRedirect("member.do?action=login");
+			   }
 		}
 		
-		
-		// 세션 로그아웃으로옮기기
+		//로그아웃 버튼(세션 없애기)
+		//수정 성공시 메세지나오게하기 
+		//삭제 성공시
+		//아이디찾기 비번찾기
 	}
 }

@@ -18,7 +18,6 @@
 		var idPattern = new RegExp('^[a-zA-Z][a-zA-Z0-9]{5,10}$','g');
 		var passPattern = new RegExp('^[a-zA-Z0-9]{4,8}$','g');
 		var emailPattern = new RegExp('^[a-z][a-z0-9_-]{3,11}@([a-z\d\.-]+)\.[a-z\.]{2,6}$','g');
-		//이메일형식 다시하기!!
 		var id = document.frm.id.value;
 		var pass = document.frm.pass.value;
 		var pass2 = document.frm.pass2.value;
