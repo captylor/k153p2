@@ -23,16 +23,14 @@
 			success : function(result) {
 						if(result.match("로그인성공")){
 							document.frm.submit();
-							
-						}else{
+						}else if(result.match("로그인실패")){
 							result="<font color=red>아이디가 존재하지 않거나,<br> 비밀번호가 일치하지 않습니다.</font>"
 							document.frm.id.value='';
 							document.frm.pass.value='';
 							
 							$('#d1').html(result);
-						} 
+						}
 			}
-			
 			
 		});
 	});

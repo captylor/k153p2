@@ -86,7 +86,11 @@ public class MemberController extends HttpServlet{
 		
 		//로그아웃 버튼(세션 없애기)
 		//수정 성공시 메세지나오게하기 
-		//삭제 성공시
+		//삭제 비번입력할때 (**로 하고) 성공시 alert로 메세지 뜨게하기!
 		//아이디찾기 비번찾기
+		
+		
+		//물품신청페이지
+		
 	}
 }

@@ -6,35 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원정보수정</title>
 </head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <script type="text/javascript">
-function updateOK(){
-	/* $(document).on('click', '#updatebt', function() {
-		$.ajax({
-			url : "/k153p2/init2/result3.jsp",
-			type : "post",
-			data : {
-				id : $('#id').val(),
-				pass : $('#pass').val(),
-				name : $('#name').val(),
-				email : $('#email').val()
-			},			
-			//dataType : "html",
-			success : function(result) {
-						document.frm.submit();
-						if(result.match("수정성공")){
-							alert('수정이 완료되었습니다. <br>다시 로그인해주세요');
-							location.href="member.do?action=login";
-							
-						}else{
-							alert('수정이 제대로 이루어지지 않았습니다!!');
-						} 
-			}
-		});
-	}); */
-}
-
-
 	function msg(){
 		alert("ID는 변경할 수 없습니다!!");
 	}
@@ -71,7 +44,6 @@ function updateOK(){
 			alert('이메일형식이 올바르지 않습니다!!');
 			document.frm.email.focus(); 
 		}else{
-			updateOK();
 			return true;
 		}
 		return false;
