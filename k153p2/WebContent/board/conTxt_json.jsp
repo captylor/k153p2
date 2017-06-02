@@ -1,3 +1,4 @@
+
 <%@page import="com.kosta.k153p2.board.dto.BoardInfo"%>
 <%@page import="com.kosta.k153p2.board.dao.BoardInfoDao"%>
 <%@page import="org.json.simple.JSONObject"%>

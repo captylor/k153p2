@@ -7,6 +7,7 @@
 	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
+	display: none;
 }
 button{
 	width: 100%;

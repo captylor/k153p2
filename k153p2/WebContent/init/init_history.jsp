@@ -34,7 +34,7 @@
 </head>
 <body>
 	<center>
-		<img src="${pageContext.request.contextPath}/checkId/연혁사진.jpg"
+		<img src="${pageContext.request.contextPath}/img/연혁사진.jpg"
 			width='700'><br>
 	</center>
 	<div id="f1">2017년</div>

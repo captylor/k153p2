@@ -46,7 +46,7 @@ if(document.getElementById(x).style.display==''){
 				<div id='menu'><%@include file="menu1.jsp" %></div>
 			</td>
 			<td valign="top" align="center">
-				<div id='body'><%@include file="body1.jsp" %></div>
+				<div id='body'><%@include file="head1.jsp" %></div>
 			</td>
 		</tr>
 	</table> 
