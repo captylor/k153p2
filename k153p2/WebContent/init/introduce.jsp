@@ -43,10 +43,10 @@ if(document.getElementById(x).style.display==''){
 		</tr>
 		<tr>
 			<td width="200" valign="top" align="center">
-				<div id='menu'><%@include file="menu0.jsp" %></div>
+<%-- 				<div id='menu'><%@include file="menu0.jsp" %></div>
 			</td>
 			<td valign="top" align="center">
-				<div id='body'><%@include file="body0.jsp" %></div>
+				<div id='body'><%@include file="body0.jsp" %></div> --%>
 			</td>
 		</tr>
 	</table> 
