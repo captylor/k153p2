@@ -80,4 +80,16 @@ public class ItemInfoDao {
 		}
 		return list;
 	}
+	
+	public List<ItemInfo> selectNoNameType() {//id,name만 검색
+		List<ItemInfo> list = null;
+		try {
+			list = smc.queryForList("product.selectNoNameType");
+			System.out.println("찾아온 사이즈 : " + list.size());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

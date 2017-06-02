@@ -37,12 +37,12 @@
 		$("#subSideM3").toggle();
 	});
 
-	$(document).on('click', '.input', function() { //토글 기능
+	$(document).on('click', '.input', function() { //서브 사이드 메뉴 중 클릭 했을 때
 		var subSideMenu_id = $(this).attr("id");
 		if (subSideMenu_id.match("franchiseIntro")) { //가맹 안내를 선택
 			$("#content").load("${pageContext.request.contextPath}/admin/index_franchiseIntro.jsp");
 		} else if (subSideMenu_id.match("branch_office_Manager")) { //지점 관리를 선택
-
+			$("#content").load("${pageContext.request.contextPath}/admin/admin_select_Fr_M.jsp");
 		} else if (subSideMenu_id.match("product_order")) { //물품 구매를 선택
 
 		} else if (subSideMenu_id.match("branch_office_Net_Sales")) { //지점별 매출를 선택
@@ -51,6 +51,19 @@
 
 		}
 	});
+	
+	$(document).on('click', '.buttonFM', function() {
+		var id = $(this).attr("id");
+		if(id.match("F_manager")){//매장 관리를 클릭 했을때
+			
+		}else{
+			$("#content").load("${pageContext.request.contextPath}/admin/admin_Manager_Registration.jsp");
+		}
+	});
+	$(document).on('click', '#store_product', function() {//매장 등록 -> 판매할 아이템 선택준비
+		window.open("admin_SalesProduct_regit.jsp");
+	});
+	
 </script>
 
 <title>Insert title here</title>

@@ -8,7 +8,7 @@
 
 	<select id="selMenu" resultClass="com.kosta.k153p2.product.dto.ItemInfo"
 		parameterClass="int">
-		select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO 
+		select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO
 		from ITEMINFO where ITEMTYPE_NO=#value#
 	</select><!-- 사이드 메뉴에서 빵 또는 음료를 클릭했을때 -->
 
@@ -18,7 +18,8 @@
 	</select>
 
 	<select id="count" resultClass="int" parameterClass="int">
-		select count(*) from iteminfo where ITEMTYPE_NO=#value#
+		select
+		count(*) from iteminfo where ITEMTYPE_NO=#value#
 	</select>
 
 	<select id="selectPage" resultClass="com.kosta.k153p2.product.dto.ItemInfo"><![CDATA[
@@ -28,5 +29,9 @@
 						from iteminfo where ITEMTYPE_NO =#sideM# order by ITEM_NO desc)
 				) 
 		where rn between #start# and #end#]]>
+	</select>
+
+	<select id="selectNoNameType" resultClass="com.kosta.k153p2.product.dto.ItemInfo">
+		select ITEM_NO,ITEM_NAME,ITEMTYPE_NO from ITEMINFO order by ITEMTYPE_NO
 	</select>
 </sqlMap>
