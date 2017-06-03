@@ -21,5 +21,6 @@
 	<sqlMap resource="./iba/mapper/duple.xml" />
 	<sqlMap resource="./iba/mapper/board.xml" />
 	<sqlMap resource="./iba/mapper/store.xml" />
+	<sqlMap resource="./iba/mapper/happyCafe.xml" />
 
 </sqlMapConfig>
