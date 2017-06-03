@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- guest.xml -->
+<sqlMap namespace="order">
+  <typeAlias alias="order" type="com.kosta.k153p2.dto.OrderInfo"/>
+
+  <insert id="insert" parameterClass="com.kosta.k153p2.dto.OrderInfo">
+     <!-- insert into guest (ID,NAME,PASS,EMAIL,TEL,CONTENTS,GDATE)
+               values (guest_seq.nextval,#name#,#pass#,
+                       #email#,#tel#,#contents#,sysdate) -->
+  </insert>
+  <select id="selectAll" resultClass="com.kosta.k153p2.dto.OrderInfo">
+     select ID,NAME,TEL,CONTENTS,GDATE
+     from guest
+     order by id desc
+  </select>
+  
+  <!-- 수정폼에 출력할 데이터 조회 -->
+  <select id="select" parameterClass="int" resultClass="order">
+      <!-- select name,email,tel,pass,contents
+      from guest
+      where id=#id# -->
+  </select>
+  
+  <!-- 수정폼에 변경된 데이터를 update -->
+  <update id="update" parameterClass="order">
+     <!--  update guest set name=#name#, email=#email#, tel=#tel#,
+             pass=#pass#,contents=#contents#
+      where id=#id# -->
+  </update>
+  <!-- delete -->
+  <delete id="delete" parameterClass="int">
+     <!-- delete from guest where id=#id# -->
+  </delete>
+ 
+  
+</sqlMap>
+  
+
+
+

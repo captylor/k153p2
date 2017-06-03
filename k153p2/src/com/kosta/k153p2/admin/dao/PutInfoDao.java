@@ -56,17 +56,5 @@ public class PutInfoDao {
 		}
 		 return put;
 	   }//select
-	   
-	   
-	   /*public List<Guest> selectAll(){//list�� ����� ������
-		  List<Guest> list=null;
-		try {
-			list = sqlMap.queryForList("guest.selectAll");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	  
-		  return list;
-	   }//selectAll
-*/	 
 	 
 }

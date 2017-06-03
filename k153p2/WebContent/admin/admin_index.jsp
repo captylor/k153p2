@@ -23,9 +23,11 @@
 	$(function() {
 		$("#sidebar").load("${pageContext.request.contextPath}/admin/admin_Menu.jsp");
 		setInterval(function() {
-			$("#table001_id").css({'background-image':'url('+bg[i]});
-			i = (i < 2) ? i+1 : 0;
-			}, 3000);
+			$("#table001_id").css({
+				'background-image' : 'url(' + bg[i]
+			});
+			i = (i < 2) ? i + 1 : 0;
+		}, 3000);
 	});
 	$(document).on('click', '#sideMenu1', function() { //토글 기능
 		$("#subSideM1").toggle();
@@ -44,26 +46,44 @@
 		} else if (subSideMenu_id.match("branch_office_Manager")) { //지점 관리를 선택
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_select_Fr_M.jsp");
 		} else if (subSideMenu_id.match("product_order")) { //물품 구매를 선택
-
+			$("#content").load("${pageContext.request.contextPath}/admin/admin_product_Fr_M.jsp");
 		} else if (subSideMenu_id.match("branch_office_Net_Sales")) { //지점별 매출를 선택
 
 		} else { //물품 보내기를 선택
 
 		}
 	});
-	
+
 	$(document).on('click', '.buttonFM', function() {
 		var id = $(this).attr("id");
-		if(id.match("F_manager")){//매장 관리를 클릭 했을때
-			
-		}else{
+		if (id.match("F_manager")) { //매장 관리를 클릭 했을때
+
+		} else {
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_Manager_Registration.jsp");
 		}
 	});
-	$(document).on('click', '#store_product', function() {//매장 등록 -> 판매할 아이템 선택준비
-		window.open("admin_SalesProduct_regit.jsp");
+	$(document).on('click', '#store_product', function() { //매장 등록 -> 판매할 아이템 선택준비
+		window.open("${pageContext.request.contextPath}/admin/admin_SalesProduct_regit.jsp");
 	});
-	
+
+	$(document).on('click', '#regitFormSubmit', function() { //매장 등록 -> 등록 버튼 선택
+		var formData = $("#regitForm").serialize(); // 폼데이터를 직렬화
+		var htmlText = "";
+		$.ajax({
+			type : "post",
+			url : "${pageContext.request.contextPath}/admin/admin_regit_store_json.jsp",
+			data : {
+				data : formData
+			},
+			success : function(data) {
+				htmlText = data;//
+				$("#content").html(htmlText);
+			},
+			error : function(xhr, status, error) {
+				console.log("에러!: " + error + " " + "상태" + status);
+			},
+		});
+	});
 </script>
 
 <title>Insert title here</title>

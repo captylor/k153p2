@@ -69,7 +69,7 @@
 	var itemlist = "";
 	function sendItemList() {
 		 $("input:checkbox[name=box]:checked").each(function(){
-			 itemlist += $(this).attr("id")+",";
+			 itemlist += $(this).attr("id")+"%";
     	 });
 		if(itemlist.length <=0){
 			alert("아이템을 선택하지 않았습니다.");

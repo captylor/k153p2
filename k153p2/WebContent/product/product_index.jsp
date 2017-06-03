@@ -90,7 +90,6 @@
 	$(document).on('click', '.pagination > a', function() {
 		var crr_page = $(this).text();
 		var htmlText = '';
-		alert("선택한 페이지 : "+crr_page+" ,@@ : "+sideMenu);
 		$.ajax({
 			type : "post",
 			url : "side_product_List.jsp",

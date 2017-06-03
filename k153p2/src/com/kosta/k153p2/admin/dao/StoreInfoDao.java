@@ -57,17 +57,4 @@ public class StoreInfoDao {
 		}
 		 return store;
 	   }//select
-	   
-	  /* public List<StoreInfo> selectAll(){//list�� ����� ������
-		  List<StoreInfo> list=null;
-		try {
-			list = sqlMap.queryForList("store.selectAll");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	  
-		  return list;
-	   }//selectAll
-*/	 
-	 
-
 }

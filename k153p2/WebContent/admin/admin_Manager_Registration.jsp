@@ -6,22 +6,22 @@
 }
 </style>
 <center>
-	<form action="aa" method="get" id="regitForm" name="ffm">
+	<form method="get" id="regitForm" name="ffm">
 		<table border="1" cellpadding="10">
 			<tr>
 				<td colspan="2" align="center"><font size="6">지점정보등록</font></td>
 			</tr>
 			<tr>
 				<td>지점명</td>
-				<td><input type="text" id="store_name" value=""></td>
+				<td><input type="text" id="store_name" name="store_name" value=""></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" id="store_addr" value=""></td>
+				<td><input type="text" id="store_addr" name="store_addr" value=""></td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="text" id="store_tel" value=""></td>
+				<td><input type="text" id="store_tel" name="store_tel" value=""></td>
 			</tr>
 			<tr>
 				<td>판매아이템</td>
@@ -29,7 +29,7 @@
 					value="클릭 해주세요!!" readonly></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="등록">
+				<td colspan="2" align="center"><input type="button" value="등록" id="regitFormSubmit">
 					<input type="reset" value="취소"></td>
 			</tr>
 		</table>
