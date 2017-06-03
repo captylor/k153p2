@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +36,15 @@ li a :hover:not (.active ){
 </head>
 <body>
 	<ul style="float: right">
-		<li><a href="#login" id="login">로그인</a></li>
-		<li><a href="#signUp" id="signUp">회원가입</a></li>
+		<c:if test="${loginInfo == null}">
+			<li><a href="/k153p2/member.do" id="login">로그인</a></li>		
+			<li><a href="#signUp" id="signUp">회원가입</a></li>
+		</c:if>
+		
+		<c:if test="${loginInfo != null}">
+			<li><a href="/k153p2/login/login_info.jsp" id="login">${loginInfo.member_name}님, 환영합니다 </a></li>		
+			<li><a href="/k153p2/login/result/login_process_json.jsp?logout=true" id="logOut">로그 아웃</a></li>
+		</c:if>
 	</ul>
 	<ul>
 		<li style="float: left"><a class="active" href="/k153p2/intro.do" id="home">Happy

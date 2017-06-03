@@ -1,12 +1,12 @@
-package com.kosta.k153p2.init2.dao;
+package com.kosta.k153p2.login.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.kosta.k153p2.login.dto.MemberInfo;
 
-import com.kosta.k153p2.init2.dto.MemberInfo;
 import iba.conf.MySqlMapClient;
 
 public class MemberInfoDAO {
@@ -55,7 +55,7 @@ public class MemberInfoDAO {
 		map.put("member_pass", pass);
 		try {
 			int t = (int) sqlMap.queryForObject("happyCafe.selectlogin",map);
-			if(t==1) return true;  //1--> id,pass ÀÏÄ¡! ·Î±×ÀÎ¼º°ø!
+			if(t==1) return true;  //1--> id,pass ï¿½ï¿½Ä¡! ï¿½Î±ï¿½ï¿½Î¼ï¿½ï¿½ï¿½!
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -75,11 +75,11 @@ public class MemberInfoDAO {
 	public boolean checkId(String id){
 		try {
 			int t = (int) sqlMap.queryForObject("happyCafe.checkid", id);
-			if(t==1) return true; //trueÀÌ¸é °°Àº id  ÀÖÀ½!!
+			if(t==1) return true; //trueï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ id  ï¿½ï¿½ï¿½ï¿½!!
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;		//°°Àº id°¡ ¾øÀ½!!
+		return false;		//ï¿½ï¿½ï¿½ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!!
 	}
 
 

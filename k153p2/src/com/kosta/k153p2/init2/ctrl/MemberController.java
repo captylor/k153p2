@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kosta.k153p2.init2.dao.MemberInfoDAO;
 import com.kosta.k153p2.init2.dto.MemberInfo;
 
-@WebServlet("/member.do")
+//@WebServlet("/member.do")
 public class MemberController extends HttpServlet{
 	
 	@Override
@@ -43,17 +43,17 @@ public class MemberController extends HttpServlet{
 				req.getRequestDispatcher("/init2/start.jsp").forward(req, resp);
 			}
 		}else if(action.equals("beginning")){
-			req.getSession().setAttribute("login",req.getParameter("id"));	//·Î±×ÀÎ¼º°øÈÄ ¼¼¼ÇºÎ¿© 
+			req.getSession().setAttribute("login",req.getParameter("id"));	//ï¿½Î±ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÇºÎ¿ï¿½ 
 			req.getRequestDispatcher("/init2/beginning.jsp").forward(req, resp);
 			
 		}else if(action.equals("memberinfo")){
-			String id = (String) req.getSession().getAttribute("login");    //¼¼¼Ç°ªÀÌ µÎ¹ø µé¾î°¡µµ µÉ±î?
+			String id = (String) req.getSession().getAttribute("login");    //ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½É±ï¿½?
 			MemberInfoDAO dao = new MemberInfoDAO();
 			MemberInfo member = dao.selectinfo(id);
 			req.setAttribute("member", member);
 			req.getRequestDispatcher("/init2/memberInfoview.jsp").forward(req, resp);
 		}else if(action.equals("memberupdate")){
-			String id = (String) req.getSession().getAttribute("login");    //¼¼¼Ç°ªÀÌ µÎ¹ø µé¾î°¡µµ µÉ±î?
+			String id = (String) req.getSession().getAttribute("login");    //ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½É±ï¿½?
 			MemberInfoDAO dao = new MemberInfoDAO();
 			MemberInfo member = dao.selectinfo(id);
 			req.setAttribute("member", member);
@@ -67,9 +67,9 @@ public class MemberController extends HttpServlet{
 			
 			MemberInfoDAO dao = new MemberInfoDAO();					
 			dao.update(member);
-			if(dao.update(member)){//¼öÁ¤¼º°øÀÌ¶ó¸é
+			if(dao.update(member)){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
 				req.getSession().invalidate();
-				resp.sendRedirect("member.do?action=login");//¸¶Áö¸·¿¡ ½ºÅ©¸³Æ®¿¡¼­ ·ÎÄÉÀÌ¼±href·Î º¸³»°í ¿©±â¼­´Â ¼¼¼Ç ÇØÁ¦
+				resp.sendRedirect("member.do?action=login");
 			}
 			
 			
@@ -78,19 +78,10 @@ public class MemberController extends HttpServlet{
 		}else if(action.equals("leave")){						
 			String id = (String) req.getSession().getAttribute("login");
 				MemberInfoDAO dao = new MemberInfoDAO();
-			   if(dao.delete(id)){//»èÁ¦¼º°ø
+			   if(dao.delete(id)){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				   req.getSession().invalidate();
 				   resp.sendRedirect("member.do?action=login");
 			   }
 		}
-		
-		//·Î±×¾Æ¿ô ¹öÆ°(¼¼¼Ç ¾ø¾Ö±â)
-		//¼öÁ¤ ¼º°ø½Ã ¸Þ¼¼Áö³ª¿À°ÔÇÏ±â 
-		//»èÁ¦ ºñ¹øÀÔ·ÂÇÒ¶§ (**·Î ÇÏ°í) ¼º°ø½Ã alert·Î ¸Þ¼¼Áö ¶ß°ÔÇÏ±â!
-		//¾ÆÀÌµðÃ£±â ºñ¹øÃ£±â
-		
-		
-		//¹°Ç°½ÅÃ»ÆäÀÌÁö
-		
 	}
 }
