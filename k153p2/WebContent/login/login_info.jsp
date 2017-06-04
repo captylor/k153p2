@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="EUC-KR" ?>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +8,16 @@
 	href="${pageContext.request.contextPath}/css/basic.css"></link>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/buttonStyle.css"></link>
-<%--½ºÅ¸ÀÏ ½ÃÆ® Àû¿ë --%>
+<%--ìŠ¤íƒ€ì¼ ì‹œíŠ¸ ì ìš© --%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ajax.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+	$(document).on("click", "#m_info", function() {
+		$("div.wrap").load("${pageContext.request.contextPath}/login/login_m_InfoView.jsp");
+	});
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,10 +25,10 @@
 	<div id="header2">
 		<jsp:include page="/product/product_TopMenu.jsp"></jsp:include></div>
 	<div id="content">
-		 	<div class="wrap">
-	  		<a href="#" class="button">È¸¿ø Á¤º¸ º¸±â</a>
-	  		<a href="#" class="button2">¹º°¡ ¾µ°Ô ÀÖ´Âµ¥ »ı°¢ÀÌ ¾È³²</a>
-			</div>
+		<div class="wrap">
+			<a href="#" class="button" id="m_info">íšŒì› ì •ë³´ ë³´ê¸°</a> <a href="#"
+				class="button2">ë­”ê°€ ì“¸ê²Œ ìˆëŠ”ë° ìƒê°ì´ ì•ˆë‚¨</a>
+		</div>
 	</div>
 
 </body>

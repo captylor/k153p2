@@ -12,5 +12,25 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<!-- 서블릿을 매핑하듯 필터도 같은 방식으로 WEB-INF/web.xml 파일에 매핑함. -->
+	<!-- filter-name : 필터 클래스 파일 이름. -->
+	<!-- filter-class : 필터 클래스 경로(애플리케이션 내에서의 절대 경로). -->
+	<!-- init-param : 필터 클래스에서 사용하려는 파라미터의 이름, 값을 web.xml에서 미리 지정할 수 있음. -->
+	<filter>
+		<filter-name>FilterA</filter-name>
+		<filter-class>filter.FilterA</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
 
+	<!-- url-pattern : 해당 애플리케이션 내에서 필터를 적용시키고자 하는 범위. -->
+	<!-- /* - 애플리케이션 내 모든 post 방식에서 적용(servlet, jsp 구분 없이). -->
+	<!-- /*.do - 애플리케이션 내 *.do로 이름을 지은 서블릿 post 메소드만 적용. -->
+	<!-- servlet-name : 애플리케이션 내 특정 서블릿에만 적용할 때 씀. -->
+	<filter-mapping>
+		<filter-name>FilterA</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

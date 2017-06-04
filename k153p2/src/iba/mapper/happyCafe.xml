@@ -3,8 +3,8 @@
 <!-- happyCafe.xml -->
 <sqlMap namespace="happyCafe">
 	<insert id="insert" parameterClass="com.kosta.k153p2.login.dto.MemberInfo">
-		insert into memberInfo(member_id,member_pass,member_name,member_email,member_icon) 
-					values (#member_id#,#member_pass#,#member_name#,#member_email#,#member_icon#)
+		insert into memberInfo(member_id,member_pass,member_name,member_email,member_icon,MEMBER_GRADE) 
+					values (#member_id#,#member_pass#,#member_name#,#member_email#,#member_icon#,'U')
 	</insert>
 	
 	<select id="selectlogin" parameterClass="java.util.Map" resultClass="int">

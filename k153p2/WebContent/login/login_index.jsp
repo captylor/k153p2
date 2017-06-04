@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="EUC-KR" ?>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!-- ì—¬ê¸°ì„œ ê³„ì† í•œê¸€ì´ ê¹¨ì§€ë„¤ -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/basic.css"></link>
-<%--½ºÅ¸ÀÏ ½ÃÆ® Àû¿ë --%>
+<%--ìŠ¤íƒ€ì¼ ì‹œíŠ¸ ì ìš© --%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ajax.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
-	$(document).on('click', '#login', function() { //·Î±×ÀÎ ¹öÆ° Å¬¸¯
+	$(document).on('click', '#login', function() { //ë¡œê·¸ì¸ ë²„íŠ¼ í´ë¦­
 		$.ajax({
 			type : "post",
 			url : "${pageContext.request.contextPath}/login/result/login_process_json.jsp",
@@ -26,16 +26,16 @@
 			success : function(data) {
 				htmlText = data.loginResult; //
 				if (htmlText.match("success")) {
-					console.log("id : "+ "${loginInfo.member_id}");
-					console.log("pass : "+"${loginInfo.member_grade}");
-					$("#login").text("${loginInfo.member_name}"+"´Ô, È¯¿µÇÕ´Ï´Ù");
-
+					console.log("id : " + "${loginInfo.member_id}");
+					console.log("pass : " + "${loginInfo.member_grade}");
+					$("#login").text("${loginInfo.member_name}" + "ë‹˜, í™˜ì˜í•©ë‹ˆë‹¤");
+					$(location).attr('href', '/k153p2/intro.do');
 				} else {
-					$("#d1").html("¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ¸ÂÁö ¾Ê½À´Ï´Ù");
+					$("#d1").html("ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
 				}
 			},
 			error : function(xhr, status, error) {
-				console.log("¿¡·¯!: " + error + " " + "»óÅÂ" + status);
+				console.log("ì—ëŸ¬!: " + error + " " + "ìƒíƒœ" + status);
 			},
 		});
 	});
@@ -50,7 +50,5 @@
 	<div id="content">
 		<jsp:include page="/login/login.jsp"></jsp:include>
 	</div>
-
-	<div id="testDiv"></div>
 </body>
 </html>

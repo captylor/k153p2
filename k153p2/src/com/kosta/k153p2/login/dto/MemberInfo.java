@@ -12,6 +12,13 @@ public class MemberInfo {
 	public MemberInfo() {
 	}
 
+	public MemberInfo(String member_id, String member_pass, String member_name, String member_email) {
+		this.member_id = member_id;
+		this.member_pass = member_pass;
+		this.member_name = member_name;
+		this.member_email = member_email;
+	}
+
 	public String getMember_id() {
 		return member_id;
 	}
