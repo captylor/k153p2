@@ -38,7 +38,7 @@ li a :hover:not (.active ){
 	<ul style="float: right">
 		<c:if test="${loginInfo == null}">
 			<li><a href="/k153p2/member.do" id="login">로그인</a></li>		
-			<li><a href="#signUp" id="signUp">회원가입</a></li>
+			<li><a href="/k153p2/login/login_sign_index.jsp" id="signUp">회원가입</a></li>
 		</c:if>
 		
 		<c:if test="${loginInfo != null}">

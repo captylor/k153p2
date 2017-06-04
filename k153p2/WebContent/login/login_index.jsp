@@ -39,6 +39,10 @@
 			},
 		});
 	});
+	
+	$(document).on('click', '#signBt', function() {
+		$(location).attr('href', '/k153p2/login/login_sign_index.jsp');
+	});
 </script>
 
 </head>
