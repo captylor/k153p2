@@ -26,7 +26,7 @@ public class StoreInfoDao {
 
 	public boolean update(StoreInfo store) {
 		try {
-			int t = sqlMap.update("store.update", store);// t: ������ ���� ����
+			int t = sqlMap.update("store.update", store);
 			if (t == 1)
 				return true;
 		} catch (SQLException e) {
@@ -35,7 +35,7 @@ public class StoreInfoDao {
 		return false;
 	}// update
 
-	public boolean delete(int store_no) {// Ư�� �� �� ����
+	public boolean delete(int store_no) {
 
 		try {
 			int t = sqlMap.delete("store.delete", store_no);
@@ -49,7 +49,7 @@ public class StoreInfoDao {
 		return false;
 	}
 
-	public StoreInfo select(int store_no) {// �������� ����� ������
+	public StoreInfo select(int store_no) {
 		StoreInfo store = null;
 		try {
 			store = (StoreInfo) sqlMap.queryForObject("store.select", store_no);
@@ -60,12 +60,22 @@ public class StoreInfoDao {
 	}// select
 
 	public int sel_count_owner(String ownerid) {// 지점장이 가지고 있는 지점의 갯수는 1개로 고정
-		int countOwner = 0;
+		int countOwner = 0;// 해당 아이디가 가지고 있는 지점의 갯수
 		try {
 			countOwner = (int) sqlMap.queryForObject("store.sel_count_owner", ownerid);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return countOwner;
+	}// select
+
+	public StoreInfo sel_myStore(String ownerid) {// 소유자를 통한 지점 검색
+		StoreInfo store = null;
+		try {
+			store = (StoreInfo) sqlMap.queryForObject("store.sel_myStore", ownerid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return store;
 	}// select
 }

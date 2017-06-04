@@ -40,11 +40,11 @@
 		}
 	});
 	$(document).on('click', '#sideMenu3', function() { //토글 기능
-		if ("${loginInfo.member_grade}" == "A") {
+	//	if ("${loginInfo.member_grade}" == "A") {
 			$("#subSideM3").toggle();
-		} else {
+/* 		} else {
 			alert("사용 권한이 없습니다");
-		}
+		} */
 	});
 
 	$(document).on('click', '.input', function() { //서브 사이드 메뉴 중 클릭 했을 때
@@ -55,6 +55,7 @@
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_select_Fr_M.jsp");
 		} else if (subSideMenu_id.match("product_order")) { //물품 구매를 선택
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_product_Fr_M.jsp");
+
 		} else if (subSideMenu_id.match("branch_office_Net_Sales")) { //지점별 매출를 선택
 
 		} else { //물품 보내기를 선택
@@ -65,6 +66,11 @@
 	$(document).on('click', '.buttonFM', function() {
 		var id = $(this).attr("id");
 		if (id.match("F_manager")) { //매장 관리를 클릭 했을때
+			var w = 300;
+			var h = 500; 
+			var left = (screen.width / 2) - (w / 2);
+			var top = (screen.height / 2) - (h / 2);
+			window.open("${pageContext.request.contextPath}/admin/admin_Manager_MyStore.jsp", "매장 정보", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 
 		} else {
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_Manager_Registration.jsp");

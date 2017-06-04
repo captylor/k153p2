@@ -44,10 +44,18 @@
 		<!-- delete from storeinfo where id=#id# -->
 	</delete>
 
-	<select id="sel_count_owner" parameterClass="String" resultClass="int">
+	<select id="sel_count_owner" parameterClass="String"
+		resultClass="int">
 		select count(OWNER_ID)
 		from storeinfo
-		where OWNER_ID=#ownerID#
+		where
+		OWNER_ID=#ownerID#
+	</select>
+
+	<select id="sel_myStore" parameterClass="String" resultClass="store">
+		select STORE_NO,STORE_NAME,STORE_ADDR,STORE_TEL,STORE_PRODUCT
+		from storeinfo
+		where OWNER_ID=#ownerid#
 	</select>
 
 </sqlMap>
