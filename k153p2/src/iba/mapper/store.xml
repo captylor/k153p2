@@ -3,38 +3,53 @@
 <!-- guest.xml -->
 <!-- 집에서는 STOREINFO_SEQ -->
 <sqlMap namespace="store">
-  <typeAlias alias="store" type="com.kosta.k153p2.admin.dto.StoreInfo"/>
+	<typeAlias alias="store" type="com.kosta.k153p2.admin.dto.StoreInfo" />
 
-  <insert id="insert" parameterClass="store">
-     insert into storeinfo (store_no, store_name, store_addr, store_tel, store_product,STORE_OPENDAY)
-               values (STOREINFO_SEQ.nextval,#store_name#,#store_addr#,#store_tel#,#store_product#,sysdate)
-  </insert> 
-  
-  
-  <!-- 수정폼에 변경된 데이터를 update -->
-  <update id="update" parameterClass="store">
-     update storeinfo set store_name=#store_name#, store_addr=#store_addr#, store_tel=#store_tel#, store_product=#store_product#
-      where store_no=#store_no#
-  </update>
-  
-  <select id="selectAll" resultClass="com.kosta.k153p2.admin.dto.StoreInfo">
-     select ID,NAME,TEL,CONTENTS,GDATE
-     from storeinfo
-     order by id desc
-  </select>
-  
-  <!-- 수정폼에 출력할 데이터 조회 -->
-  <select id="select" parameterClass="int" resultClass="store">
-      select store_no, store_name, store_addr, store_tel, store_product
-      from storeinfo
-      where store_no=#store_no#
-  </select>
-  
-  <!-- delete -->
-  <delete id="delete" parameterClass="int">
-    <!--  delete from storeinfo where id=#id# -->
-  </delete>
-    
+	<insert id="insert" parameterClass="store">
+		insert into storeinfo
+		(store_no, store_name, store_addr, store_tel,
+		store_product,STORE_OPENDAY,OWNER_ID)
+		values
+		(STOREINFO_SEQ.nextval,#store_name#,#store_addr#,#store_tel#,#store_product#,sysdate,#ownerID#)
+	</insert>
+
+
+	<!-- 수정폼에 변경된 데이터를 update -->
+	<update id="update" parameterClass="store">
+		update storeinfo set
+		store_name=#store_name#, store_addr=#store_addr#,
+		store_tel=#store_tel#, store_product=#store_product#
+		where
+		store_no=#store_no#
+	</update>
+
+	<select id="selectAll" resultClass="com.kosta.k153p2.admin.dto.StoreInfo">
+		select
+		ID,NAME,TEL,CONTENTS,GDATE
+		from storeinfo
+		order by id desc
+	</select>
+
+	<!-- 수정폼에 출력할 데이터 조회 -->
+	<select id="select" parameterClass="int" resultClass="store">
+		select
+		store_no, store_name, store_addr, store_tel, store_product
+		from
+		storeinfo
+		where store_no=#store_no#
+	</select>
+
+	<!-- delete -->
+	<delete id="delete" parameterClass="int">
+		<!-- delete from storeinfo where id=#id# -->
+	</delete>
+
+	<select id="sel_count_owner" parameterClass="String" resultClass="int">
+		select count(OWNER_ID)
+		from storeinfo
+		where OWNER_ID=#ownerID#
+	</select>
+
 </sqlMap>
   
 

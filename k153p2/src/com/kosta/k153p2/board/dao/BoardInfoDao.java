@@ -105,4 +105,14 @@ public class BoardInfoDao {// DB���� ����Ŭ����
 		return count;
 	}// selectCount
 
+	public String selPass(int board_no){
+		String pw= "";
+		try {
+			pw = (String) sqlMap.queryForObject("boardinfo.selPass", board_no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pw;
+	}
 }// selectCount

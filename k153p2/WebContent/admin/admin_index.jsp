@@ -33,10 +33,18 @@
 		$("#subSideM1").toggle();
 	});
 	$(document).on('click', '#sideMenu2', function() { //토글 기능
-		$("#subSideM2").toggle();
+		if ("${loginInfo.member_grade}" == "M") {
+			$("#subSideM2").toggle();
+		} else {
+			alert("사용 권한이 없습니다");
+		}
 	});
 	$(document).on('click', '#sideMenu3', function() { //토글 기능
-		$("#subSideM3").toggle();
+		if ("${loginInfo.member_grade}" == "A") {
+			$("#subSideM3").toggle();
+		} else {
+			alert("사용 권한이 없습니다");
+		}
 	});
 
 	$(document).on('click', '.input', function() { //서브 사이드 메뉴 중 클릭 했을 때
@@ -76,7 +84,7 @@
 				data : formData
 			},
 			success : function(data) {
-				htmlText = data;//
+				htmlText = data; //
 				$("#content").html(htmlText);
 			},
 			error : function(xhr, status, error) {

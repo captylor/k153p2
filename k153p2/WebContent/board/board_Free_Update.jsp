@@ -15,6 +15,7 @@ var article_no = 0;
 			url : "conTxt_json.jsp",
 			dataType : "json",
 			data : {
+				title : "title",
 				article_no : article_no
 			},
 			success : function(data) {

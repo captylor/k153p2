@@ -9,13 +9,13 @@ public class StoreInfo {
 	private String store_product;
 	private String store_openday;
 	private String store_photo;
+	private String ownerID;
 
 	public StoreInfo() {
 
 	}
 
 	public StoreInfo(String store_name, String store_addr, String store_tel, String store_product) {
-		super();
 		this.store_name = store_name;
 		this.store_addr = store_addr;
 		this.store_tel = store_tel;
@@ -88,6 +88,14 @@ public class StoreInfo {
 
 	public void setStore_photo(String store_photo) {
 		this.store_photo = store_photo;
+	}
+
+	public String getOwnerID() {
+		return ownerID;
+	}
+
+	public void setOwnerID(String ownerID) {
+		this.ownerID = ownerID;
 	}
 
 }

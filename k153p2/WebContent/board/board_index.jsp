@@ -90,7 +90,6 @@
 	});
 
 	$(document).on('click', '#writingBt', function() {
-		//로그인한 세션이 있다면
 		var w = 500;
 		var h = 300; //Update  폼은 350
 		var left = (screen.width / 2) - (w / 2);
@@ -106,6 +105,7 @@
 			url : "conTxt_json.jsp",
 			dataType : "json",
 			data : {
+				title : "title",
 				article_no : article_no
 			},
 			success : function(data) {
@@ -119,16 +119,32 @@
 		});
 	});
 
-	$(document).on('click', ".panel", function() { // 게시판 본문을 클릭
+	$(document).on('click', ".panel", function() { // 게시판 본문을 클릭 수정 또는 삭제 요청
 		var article_no = $(this).attr("id").substring(7);
-		var w = 500;
-		var h = 370; //Update  폼은 350
-		var left = (screen.width / 2) - (w / 2);
-		var top = (screen.height / 2) - (h / 2);
-		var updataForm = window.open("board_Free_Update.jsp?no="+article_no, "글쓰기", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+		var passcheck = null;
+		$.ajax({
+			url : "conTxt_json.jsp",
+			dataType : "json",
+			data : {
+				article_no : article_no
+			},
+			success : function(data) {
+				passcheck = data.m_pass;
+				if (passcheck == '${loginInfo.member_pass }') {
+					var w = 500;
+					var h = 370; //Update  폼은 350
+					var left = (screen.width / 2) - (w / 2);
+					var top = (screen.height / 2) - (h / 2);
+					var updataForm = window.open("board_Free_Update.jsp?no=" + article_no, "글쓰기", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+				} else {
+					alert("수정할 권한이 없습니다");
+				}
+			}
+		});
 	});
-	
-	$(document).on('click', '#sideMenu', function() {// 토글기능
+
+	$(document).on('click', '#sideMenu', function() { // 토글기능
 		$(".inputB").toggle();
 	});
 </script>
