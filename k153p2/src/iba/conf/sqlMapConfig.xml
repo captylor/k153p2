@@ -19,6 +19,7 @@
 
 	<sqlMap resource="./iba/mapper/productSql.xml" /><!-- 아아템  -->
 	<sqlMap resource="./iba/mapper/duple.xml" />
-	<sqlMap resource="./iba/mapper/happyCafe.xml" />
+	<sqlMap resource="./iba/mapper/happyCafe.xml" /><!-- 회원가입 및 로그인 -->
+	<sqlMap resource="./iba/mapper/order.xml" /> <!-- order~> 게시판 과정 -->
 
 </sqlMapConfig>
