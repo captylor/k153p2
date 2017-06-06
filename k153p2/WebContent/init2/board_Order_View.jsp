@@ -18,9 +18,9 @@
 		<td width=50 align=center>번호</td>
 		<td width=320  align=center>제목</td>
 		<td width=100 align=center>등록일</td>
+		<td width=100 align=center>처리결과</td>
 	</tr>
 	
-	//-------------------------------------------
 	<c:forEach items="${list }" var="info">
 		<tr>
 		  <td>${info.board_no }</td>

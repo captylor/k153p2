@@ -9,6 +9,11 @@
 </head>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+	function order(){
+		location.href="/k153p2/member.do?action=order"
+	}
+
+
 	function leave(){
 		var passcheck = prompt('탈퇴하시려면 비밀번호를 입력하세요');
 		if(passcheck==='${member.member_pass }'){
@@ -55,7 +60,7 @@
 			<tr>
 				<td></td>
 				<td><input type="submit" value="수정"> <input type="button" value="탈퇴" onclick="leave()"></td>
-				<td></td>
+				<td><input type="button" value="제품신청 테스트용 ㅎㅎ" onclick="order()"></td>
 			</tr>
 			</table>
 		</form>

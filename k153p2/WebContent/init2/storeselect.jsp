@@ -8,17 +8,24 @@
 	request.setCharacterEncoding("UTF-8");
 
 	SqlMapClient sqlMap = MySqlMapClient.getSqlMapInstance();
-	
-	String action = request.getParameter("action");
+	String id = (String)request.getSession().getAttribute("login");
 	List<String> list = null;
-	if(action.equals("storeselect")){
-		list = sqlMap.queryForList("order.storename");
-
+	
+	list = sqlMap.queryForList("order.storename",id);
+	
+	
+	if(request.getSession().getAttribute("selectStore")==null){
+		out.print("<option>==선택==</option>");
+	}else{
+		out.print("<option>"+request.getSession().getAttribute("selectStore")+"</option>");
 	}
-	out.print("<option>==선택=2</option>");
+	
+	String selectStore = (String)request.getSession().getAttribute("selectStore");
+	list.remove(selectStore);
 	for(int i=0; i<list.size(); i++){
 		out.print("<option>"+list.get(i)+"</option>");
 	}	
+	
 		
 	
 	

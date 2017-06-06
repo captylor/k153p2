@@ -2,8 +2,40 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <!-- order.xml -->
 <sqlMap namespace="order">
-	<select id="storename" resultClass="String">
+	<select id="storename" resultClass="String" parameterClass="String">
 		select distinct store_name
-		from storeinfo
+    	from storeinfo, memberinfo
+   		where store_owner = #member_id#
 	</select>
+	
+	<select id="gethex" parameterClass="String" resultClass="String">
+		select store_product
+		from storeInfo
+		where store_name = #store_name#
+	</select>
+	
+	<select id="selectProduct" parameterClass="int" resultClass="String">
+		select item_name
+		from iteminfo
+		where item_no = #item_no#
+	</select>
+	
+	<select id="toStore" parameterClass="String" resultClass="String">
+		select store_no
+		from storeinfo 
+		where store_name=#store_name#
+	</select>
+	
+	<insert id="insertGuest" parameterClass="com.kosta.k153p2.init2.dto.Order">
+		insert into orderinfo(order_no, store_no, item_no, order_amount)  
+						values(orderinfo_seq.nextval, #store_no#, #item_no#, #order_amount#)
+	</insert>
 </sqlMap>
+
+
+
+
+
+
+
+
