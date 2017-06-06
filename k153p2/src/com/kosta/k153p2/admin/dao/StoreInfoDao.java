@@ -1,8 +1,12 @@
 package com.kosta.k153p2.admin.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.kosta.k153p2.admin.dto.Item_Stock;
 import com.kosta.k153p2.admin.dto.StoreInfo;
 
 import iba.conf.MySqlMapClient;
@@ -78,4 +82,39 @@ public class StoreInfoDao {
 		}
 		return store;
 	}// select
+
+	public boolean insert_init_stock(int store_no, int item_no) {
+		try {
+			Map<String, Integer> map = new HashMap<>();
+			map.put("store_no", store_no);
+			map.put("item_no", item_no);
+			sqlMap.insert("store.insert_init_stock", map);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}// insert_init_stock
+
+	public int sel_STOREINFO_SEQ() {
+		int seq = 0;
+		try {
+			seq = (int) sqlMap.queryForObject("store.sel_STOREINFO_SEQ");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return seq;
+	}// sel_STOREINFO_SEQ
+
+	
+	public List<Item_Stock> sel_crr_stock(String id) {
+		List<Item_Stock> list = null;
+		try {
+			list = sqlMap.queryForList("store.sel_crr_stock",id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}//sel_crr_stock
 }

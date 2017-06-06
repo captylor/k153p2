@@ -8,11 +8,18 @@
 	<insert id="insert" parameterClass="store">
 		insert into storeinfo
 		(store_no, store_name, store_addr, store_tel,
-		store_product,STORE_OPENDAY,OWNER_ID)
+		store_product,STORE_OPENDAY,store_owner)
 		values
-		(STOREINFO_SEQ.nextval,#store_name#,#store_addr#,#store_tel#,#store_product#,sysdate,#ownerID#)
+		(STOREINFO_SEQ.nextval,#store_name#,#store_addr#,#store_tel#,#store_product#,sysdate,#store_owner#)
 	</insert>
 
+	<insert id="insert_init_stock" parameterClass="java.util.Map">
+		insert into
+		STOCKINFO
+		(store_no, item_no, stock_amount)
+		values
+		(#store_no#,#item_no#,0)
+	</insert>
 
 	<!-- 수정폼에 변경된 데이터를 update -->
 	<update id="update" parameterClass="store">
@@ -46,18 +53,31 @@
 
 	<select id="sel_count_owner" parameterClass="String"
 		resultClass="int">
-		select count(OWNER_ID)
+		select count(store_owner)
 		from storeinfo
 		where
-		OWNER_ID=#ownerID#
+		store_owner=#store_owner#
 	</select>
 
 	<select id="sel_myStore" parameterClass="String" resultClass="store">
 		select STORE_NO,STORE_NAME,STORE_ADDR,STORE_TEL,STORE_PRODUCT
-		from storeinfo
-		where OWNER_ID=#ownerid#
+		from
+		storeinfo
+		where store_owner=#store_owner#
 	</select>
 
+	<select id="sel_STOREINFO_SEQ" resultClass="int">
+		select
+		STOREINFO_SEQ.currval from dual
+	</select>
+
+	<select id="sel_crr_stock" resultClass="com.kosta.k153p2.admin.dto.Item_Stock"
+		parameterClass="String">
+		select ITEM_NO,item_name,STOCK_AMOUNT,STORE_NO from STOCKINFO inner
+		JOIN ITEMINFO USING(item_no)
+		where STORE_NO = (select STOREINFO.STORE_NO from STOREINFO where
+		STOREINFO.STORE_OWNER=#id#)
+	</select>
 </sqlMap>
   
 

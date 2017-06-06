@@ -98,6 +98,15 @@
 			},
 		});
 	});
+	
+	$(document).on('click', '#p_Stock', function() {//재고 현황 클릭
+		var w = 300;
+		var h = 300; 
+		var left = (screen.width / 2) - (w / 2);
+		var top = (screen.height / 2) - (h / 2);
+		window.open("${pageContext.request.contextPath}/admin/stock/admin_crrent_Stock.jsp", "재고 현황", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+	});
 </script>
 
 <title>Insert title here</title>

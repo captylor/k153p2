@@ -9,7 +9,7 @@ public class StoreInfo {
 	private String store_product;
 	private String store_openday;
 	private String store_photo;
-	private String ownerID;
+	private String store_owner;
 
 	public StoreInfo() {
 
@@ -90,12 +90,14 @@ public class StoreInfo {
 		this.store_photo = store_photo;
 	}
 
-	public String getOwnerID() {
-		return ownerID;
+	public String getStore_owner() {
+		return store_owner;
 	}
 
-	public void setOwnerID(String ownerID) {
-		this.ownerID = ownerID;
+	public void setStore_owner(String store_owner) {
+		this.store_owner = store_owner;
 	}
+
+
 
 }
