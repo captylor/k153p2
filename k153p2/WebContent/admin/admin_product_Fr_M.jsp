@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 
 <style>
 .buttonPM {
@@ -52,18 +52,18 @@
 
 <div id="admin_select">
 	<button class="buttonPM" style="vertical-align: middle" id="p_Stock">
-		<span>ìž¬ê³  í˜„í™© </span>
+		<span>Àç°í ÇöÈ² </span>
 	</button>
 
 	<button class="buttonPM"
 		style="vertical-align: middle; background-color: #6699FF;"
 		id="p_Apply">
-		<span>ë¬¼í’ˆ ë°œì£¼ </span>
+		<span>¹°Ç° ¹ßÁÖ </span>
 	</button>
 
 	<button class="buttonPM"
 		style="vertical-align: middle; background-color: #81F79F;"
 		id="p_list">
-		<span>ì‹ ì²­ í˜„í™© </span>
+		<span>½ÅÃ» ÇöÈ² </span>
 	</button>
 </div>

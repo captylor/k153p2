@@ -1,12 +1,9 @@
-
-<%@page import="java.util.Arrays"%>
-<%@page import="com.kosta.k153p2.admin.dto.StoreInfo"%>
-<%@page import="com.kosta.k153p2.admin.dao.StoreInfoDao"%>
 <%@page import="com.kosta.k153p2.login.dto.MemberInfo"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.Enumeration"%>
-
+<%@page import="com.kosta.k153p2.admin.dto.StoreInfo"%>
+<%@page import="com.kosta.k153p2.admin.dao.StoreInfoDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%-- admin_Manager_Registration.jsp에서 받은 값으로 db에 저장  매장 등록--%>
@@ -15,7 +12,6 @@
 	MemberInfo info = (MemberInfo) session.getAttribute("loginInfo");
 
 	String data[] = URLDecoder.decode(request.getParameter("data"), "UTF-8").split("&");//직렬화에 따른 한글 깨짐 방지
-	System.out.println(Arrays.toString(data));
 	String store_name[] = data[0].split("=");//0=변수 1=변수 값
 	String store_addr[] = data[1].split("=");
 	String store_tel[] = data[2].split("=");

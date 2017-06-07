@@ -19,8 +19,6 @@ public class MemberCtrl extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		String action = req.getParameter("action");
-		
-		res.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = res.getWriter();
 		
 		if (action == null) {
@@ -32,9 +30,9 @@ public class MemberCtrl extends HttpServlet {
 					req.getParameter("name"), req.getParameter("pass"));
 			boolean result = dao.update(member);
 			if (result) {
-				//out.print("<script>window.opener.location.reload(); window.self.close();</script>");
+				out.print("<script>window.opener.location.reload(); window.self.close();</script>");
 			} else {
-				//out.print("<h1>삭제 실패하였습니다</h1>");
+				out.print("<h1>삭제 실패하였습니다</h1>");
 			}
 		}
 	}
