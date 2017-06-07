@@ -2,6 +2,7 @@ package com.kosta.k153p2.init2.ctrl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -84,7 +85,8 @@ public class MemberController extends HttpServlet{
 				   req.getSession().invalidate();
 				   resp.sendRedirect("member.do?action=login");
 			   }
-		//=========================================================order ---> 게시판 부분
+		//=========================================================order ---> 주문 후 게시판 부분
+			   
 		}else if(action.equals("order")){
 			req.getSession().removeAttribute("selectStore");
 			req.getSession().removeAttribute("store_name");
@@ -95,9 +97,6 @@ public class MemberController extends HttpServlet{
 				req.getSession().setAttribute("selectStore", req.getParameter("store_name"));
 				req.getSession().setAttribute("store_name", req.getParameter("store_name"));  
 			}
-				
-			
-			
 			OrderDAO dao = new OrderDAO();
 			String hex = dao.getHex((String) req.getSession().getAttribute("store_name"));			//16진수 
 			List<String> list = dao.select_product(hex);
@@ -105,47 +104,43 @@ public class MemberController extends HttpServlet{
 			
 			req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);	
 		}else if(action.equals("inputguest")){
-			int count = 0;  //총0~132 ---> 133개
+			int count=1;
 			List<String> list_itemNo = new ArrayList<>();
 			List<String> list_amount = new ArrayList<>();
-			List<Order> orderList = new ArrayList<>(); 
 			
 			OrderDAO dao = new OrderDAO();
 			String store_name = (String) req.getSession().getAttribute("store_name");
 			String store_no = dao.toStore(store_name);
 			
-			while(req.getParameter(count+"") != null){
-				count++;		
+			while(req.getParameter("amount"+count) != null){
+				count++;
 			}
-			for(int i=0; i<count; i++){ 
-				list_itemNo.add(i+"");
-				list_amount.add(req.getParameter(i+""));
-				
+			for(int i=1; i<count; i++){   					//전체 주문 request값 얻기
+				list_amount.add(req.getParameter("amount"+i));
 			}
-			for(int j=0; j<list_amount.size(); j++){
-				//System.out.println(list_amount);  item_no이  재고테이블 말고 다른 곳에서 필요한지..? 알아보기  
-				//	    							과연 포린키가 필요한가..? 
-				if(!(list_amount.get(j)=="") && !(list_amount.get(j).equals("null"))){
+			for(int i=1; i<300; i++){			//판매하는 제품 걸러내기 
+				if(req.getParameter(i+"")!=null){
+					list_itemNo.add(req.getParameter(i+""));
+				}
+			}
+			for(int i=0; i<list_amount.size(); i++){   //판매하는 제품(db와연결된)에 대한  발주량을 추가 후 dao호출
+				if(!(list_amount.get(i)=="") && !(list_amount.get(i).equals(null)	&& !(list_itemNo.get(i)==null))){
+					System.out.println(list_itemNo.get(i)+"\t"+list_amount.get(i));
 					Order order = new Order();
 						order.setStore_name(store_name);
 						order.setStore_no(Integer.parseInt(store_no));
-						order.setItem_no(Integer.parseInt(list_itemNo.get(j)));
-						order.setOrder_amount(Integer.parseInt(list_amount.get(j)));
-						if(dao.insertGuest(order)){
-							System.out.println("성공!");
-						}
+						order.setItem_no(Integer.parseInt(list_itemNo.get(i)));
+						order.setOrder_amount(Integer.parseInt(list_amount.get(i)));
+						if(dao.insertGuest(order)){//주문 성공시 초기 주문창으로
+							req.getSession().removeAttribute("selectStore");
+							req.getSession().removeAttribute("store_name");
+							req.getSession().removeAttribute("selectStore");
+							req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);
+						}//if
 				}//if
 			}//for
-			
-			
-				req.getSession().removeAttribute("selectStore");
-				req.getSession().removeAttribute("store_name");
-				req.getSession().removeAttribute("selectStore");
-				req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);
-			
-				
-			
-			
+		}else if(action.equals("guest")){
+			req.getRequestDispatcher("/init2/board_Order_View.jsp").forward(req, resp);
 		}
 		
 		
@@ -158,9 +153,6 @@ public class MemberController extends HttpServlet{
 		//수정 성공시 메세지나오게하기 
 		//삭제 비번입력할때 (**로 하고) 성공시 alert로 메세지 뜨게하기!
 		//아이디찾기 비번찾기
-		
-		
-		//물품신청페이지
 		
 	}
 }

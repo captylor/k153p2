@@ -6,13 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>발주게시판</title>
-<%--board_Order_View --%>
+<!--board_Order_View -->
 
 </head>
 <body>
 <h3>발주게시판</h3>
 <br><br>
-
 <table cellspacing=1 width=600 border=1>
 	<tr>	
 		<td width=50 align=center>번호</td>

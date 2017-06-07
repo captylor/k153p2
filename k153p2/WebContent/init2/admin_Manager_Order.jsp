@@ -51,7 +51,8 @@
 				<c:forEach items="${product }" var="product" varStatus="names">							
 					<tr>
 						<td align="center">${product}</td>
-						<td><input type="text" name="${names.index}" id="${product.substring(4)}"> 개</td>
+						<td><input type="text" name="amount${names.index+1}"> 개</td>
+						<input type="hidden" name="${product.substring(4)}" value="${product.substring(4)}">
 					</tr>
 				</c:forEach>
 				<tr>

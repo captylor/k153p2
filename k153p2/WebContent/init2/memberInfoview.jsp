@@ -12,6 +12,9 @@
 	function order(){
 		location.href="/k153p2/member.do?action=order"
 	}
+	function guest(){
+		location.href="/k153p2/member.do?action=guest"
+	}
 
 
 	function leave(){
@@ -59,9 +62,14 @@
 			<br>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="수정"> <input type="button" value="탈퇴" onclick="leave()"></td>
-				<td><input type="button" value="제품신청 테스트용 ㅎㅎ" onclick="order()"></td>
+				<td><input type="submit" value="수정"> <input type="button" value="탈퇴" onclick="leave()"></td><br>
 			</tr>
+
+			<tr><!--기능추가용-->
+				<td><input type="button" value="제품신청 테스트용 ㅎㅎ" onclick="order()"></td>
+				<td><input type="button" value="게시판 테스트용" onclick="guest()"></td>
+			</tr>
+			
 			</table>
 		</form>
 	</center>
