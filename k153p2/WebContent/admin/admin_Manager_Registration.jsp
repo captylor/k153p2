@@ -17,7 +17,7 @@
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" id="store_addr" name="store_addr" value=""></td>
+				<td><input type="text" id="store_addr" name="store_addr2" value=""></td>
 			</tr>
 			<tr>
 				<td>연락처</td>

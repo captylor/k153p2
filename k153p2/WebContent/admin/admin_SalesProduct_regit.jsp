@@ -46,38 +46,38 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	var htmlText = "";
-		$.ajax({
-			type : "post",
-			url : "admin_productName_json.jsp",
-			dataType : "json",
-			success : function(data) {
-				for (var i = 0; i < data.length; i++) {
-					if (i % 9 == 0) {
-						htmlText += "<tr>"
-					}
-					htmlText += "<td>" + data[i].i_name +"</td><td><input type=\"checkbox\" id=\""+data[i].i_no+"\" name=\"box\"></td>"
+	$.ajax({
+		type : "post",
+		url : "admin_productName_json.jsp",
+		dataType : "json",
+		success : function(data) {
+			for (var i = 0; i < data.length; i++) {
+				if (i % 9 == 0) {
+					htmlText += "<tr>"
 				}
-				$("table > tbody").html(htmlText);
-			},
-			complete : function(data) {},
-			error : function(xhr, status, error) {
-				console.log("에러!: " + error);
-				console.log("상태" + status);
+				htmlText += "<td>" + data[i].i_name + "</td><td><input type=\"checkbox\" id=\"" + data[i].i_no + "\" name=\"box\"></td>"
 			}
-		});
+			$("table > tbody").html(htmlText);
+		},
+		complete : function(data) {},
+		error : function(xhr, status, error) {
+			console.log("에러!: " + error);
+			console.log("상태" + status);
+		}
+	});
 
 	var itemlist = "";
 	function sendItemList() {
-		 $("input:checkbox[name=box]:checked").each(function(){
-			 itemlist += $(this).attr("id")+"%";
-    	 });
-		if(itemlist.length <=0){
+		$("input:checkbox[name=box]:checked").each(function() {
+			itemlist += $(this).attr("id") + "%";
+		});
+		if (itemlist.length <= 0) {
 			alert("아이템을 선택하지 않았습니다.");
 			self.close()
-		}else{
+		} else {
 			var cofirmItem = confirm("지금 선택한 제품을 해당 지점에 판매하시겠습니까?");
-			if(cofirmItem){
-				window.opener.document.getElementById("store_product").value=itemlist.substr(0, itemlist.length-1);
+			if (cofirmItem) {
+				window.opener.document.getElementById("store_product").value = itemlist.substr(0, itemlist.length - 1);
 				self.close()
 			}
 		}

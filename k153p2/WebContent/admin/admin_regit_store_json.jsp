@@ -13,7 +13,7 @@
 
 	String data[] = URLDecoder.decode(request.getParameter("data"), "UTF-8").split("&");//직렬화에 따른 한글 깨짐 방지
 	String store_name[] = data[0].split("=");//0=변수 1=변수 값
-	String store_addr[] = data[1].split("=");
+	String store_addr2[] = data[1].split("=");
 	String store_tel[] = data[2].split("=");
 
 	String arritemlist[] = data[3].split("=");
@@ -22,7 +22,7 @@
 	System.out.println("store_name :" + store_name[1] + " itemlist 사이즈 : " + itemlist.length);
 
 	StoreInfoDao dao = new StoreInfoDao();
-	StoreInfo store = new StoreInfo(store_name[1], store_addr[1], store_tel[1], arritemlist[1]);
+	StoreInfo store = new StoreInfo(store_name[1], store_addr2[1], store_tel[1], arritemlist[1]);
 	store.setStore_owner(info.getMember_id());
 
 	System.out.println("뭐여 가지고 있는 지점 갯수 : " + dao.sel_count_owner(info.getMember_id()));

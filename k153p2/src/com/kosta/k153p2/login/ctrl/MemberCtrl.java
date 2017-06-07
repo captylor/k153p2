@@ -19,6 +19,7 @@ public class MemberCtrl extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		String action = req.getParameter("action");
+		res.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = res.getWriter();
 		
 		if (action == null) {
