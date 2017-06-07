@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="EUC-KR" ?>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" />
-<title>Áßº¹È®ÀÎ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ì¤‘ë³µí™•ì¸</title>
 <!-- <script type="text/javascript" src="../js/ajax2.js"></script> -->
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -23,9 +23,9 @@
 			success : function(data) {
 					htmlText += data;
 						if(!idPattern.test(id)){
-							alert('ID´Â ¿µ¹®ÀÚ¸¦ ½ÃÀÛÀ¸·ÎÇÏ´Â 6~10ÀÚ¸®·Î ÀÛ¼ºÇØ ÁÖ¼¼¿ä!!');
-						}else if(htmlText.match("»ç¿ë°¡´É")){
-							var ynn=confirm(id+"´Â »ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù :) »ç¿ëÇÏ½Ã°Ú½À´Ï±î?");
+							alert('IDëŠ” ì˜ë¬¸ìë¥¼ ì‹œì‘ìœ¼ë¡œí•˜ëŠ” 6~10ìë¦¬ë¡œ ì‘ì„±í•´ ì£¼ì„¸ìš”!!');
+						}else if(htmlText.match("ì‚¬ìš©ê°€ëŠ¥")){
+							var ynn=confirm(id+"ëŠ” ì‚¬ìš© ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤ :) ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 							if(ynn){
 								opener.document.frm.id.value=id;
 								self.close();
@@ -41,7 +41,7 @@
 <body>
 	<form name='frm' method='POST' >
 		<input type="text" name="id" id="id">
-		<input type="button" value="Áßº¹È®ÀÎ" id="test">
+		<input type="button" value="ì¤‘ë³µí™•ì¸" id="test">
 		<div id="d1"></div>
 	</form>
 </body>

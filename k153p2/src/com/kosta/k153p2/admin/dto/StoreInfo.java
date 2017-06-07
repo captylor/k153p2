@@ -5,6 +5,9 @@ public class StoreInfo {
 	private int store_no;
 	private String store_name;
 	private String store_addr;
+	private String store_addr2;
+
+
 	private String store_tel;
 	private String store_product;
 	private String store_openday;
@@ -15,9 +18,9 @@ public class StoreInfo {
 
 	}
 
-	public StoreInfo(String store_name, String store_addr, String store_tel, String store_product) {
+	public StoreInfo(String store_name, String store_addr2, String store_tel, String store_product) {
 		this.store_name = store_name;
-		this.store_addr = store_addr;
+		this.store_addr2 = store_addr2;
 		this.store_tel = store_tel;
 		this.store_product = store_product;
 	}
@@ -98,6 +101,12 @@ public class StoreInfo {
 		this.store_owner = store_owner;
 	}
 
+	public String getStore_addr2() {
+		return store_addr2;
+	}
 
+	public void setStore_addr2(String store_addr2) {
+		this.store_addr2 = store_addr2;
+	}
 
 }

@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="EUC-KR" ?>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/basic.css"></link>
-<%--½ºÅ¸ÀÏ ½ÃÆ® Àû¿ë --%>
+<%--ìŠ¤íƒ€ì¼ ì‹œíŠ¸ ì ìš© --%>
 <script src="${pageContext.request.contextPath}/js/ajax.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
-	//-------------------------------°¡¸Í ¾È³» ½½¶óÀÌµå-----------------------------------------
+	//-------------------------------ê°€ë§¹ ì•ˆë‚´ ìŠ¬ë¼ì´ë“œ-----------------------------------------
 	var bg = new Array();
-	bg[0] = "/k153p2/img/±îÆä1.png";
-	bg[1] = "/k153p2/img/±îÆä2.png";
-	bg[2] = "/k153p2/img/±îÆä3.png";
+	bg[0] = "/k153p2/img/ê¹Œí˜1.png";
+	bg[1] = "/k153p2/img/ê¹Œí˜2.png";
+	bg[2] = "/k153p2/img/ê¹Œí˜3.png";
 	var i = 0;
 	//-------------------------------------------------------------------------------------
 
@@ -28,60 +28,61 @@
 			});
 			i = (i < 2) ? i + 1 : 0;
 		}, 3000);
+			
 	});
-	$(document).on('click', '#sideMenu1', function() { //Åä±Û ±â´É
+	$(document).on('click', '#sideMenu1', function() { //í† ê¸€ ê¸°ëŠ¥
 		$("#subSideM1").toggle();
 	});
-	$(document).on('click', '#sideMenu2', function() { //Åä±Û ±â´É
+	$(document).on('click', '#sideMenu2', function() { //í† ê¸€ ê¸°ëŠ¥
 		if ("${loginInfo.member_grade}" == "M") {
 			$("#subSideM2").toggle();
 		} else {
-			alert("»ç¿ë ±ÇÇÑÀÌ ¾ø½À´Ï´Ù");
+			alert("ì‚¬ìš© ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤");
 		}
 	});
-	$(document).on('click', '#sideMenu3', function() { //Åä±Û ±â´É
-	//	if ("${loginInfo.member_grade}" == "A") {
-			$("#subSideM3").toggle();
-/* 		} else {
-			alert("»ç¿ë ±ÇÇÑÀÌ ¾ø½À´Ï´Ù");
-		} */
+	$(document).on('click', '#sideMenu3', function() { //í† ê¸€ ê¸°ëŠ¥
+		//	if ("${loginInfo.member_grade}" == "A") {
+		$("#subSideM3").toggle();
+	/* 		} else {
+				alert("ì‚¬ìš© ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤");
+			} */
 	});
 
-	$(document).on('click', '.input', function() { //¼­ºê »çÀÌµå ¸Ş´º Áß Å¬¸¯ ÇßÀ» ¶§
+	$(document).on('click', '.input', function() { //ì„œë¸Œ ì‚¬ì´ë“œ ë©”ë‰´ ì¤‘ í´ë¦­ í–ˆì„ ë•Œ
 		var subSideMenu_id = $(this).attr("id");
-		if (subSideMenu_id.match("franchiseIntro")) { //°¡¸Í ¾È³»¸¦ ¼±ÅÃ
+		if (subSideMenu_id.match("franchiseIntro")) { //ê°€ë§¹ ì•ˆë‚´ë¥¼ ì„ íƒ
 			$("#content").load("${pageContext.request.contextPath}/admin/index_franchiseIntro.jsp");
-		} else if (subSideMenu_id.match("branch_office_Manager")) { //ÁöÁ¡ °ü¸®¸¦ ¼±ÅÃ
+		} else if (subSideMenu_id.match("branch_office_Manager")) { //ì§€ì  ê´€ë¦¬ë¥¼ ì„ íƒ
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_select_Fr_M.jsp");
-		} else if (subSideMenu_id.match("product_order")) { //¹°Ç° ±¸¸Å¸¦ ¼±ÅÃ
+		} else if (subSideMenu_id.match("product_order")) { //ë¬¼í’ˆ êµ¬ë§¤ë¥¼ ì„ íƒ
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_product_Fr_M.jsp");
 
-		} else if (subSideMenu_id.match("branch_office_Net_Sales")) { //ÁöÁ¡º° ¸ÅÃâ¸¦ ¼±ÅÃ
+		} else if (subSideMenu_id.match("branch_office_Net_Sales")) { //ì§€ì ë³„ ë§¤ì¶œë¥¼ ì„ íƒ
 
-		} else { //¹°Ç° º¸³»±â¸¦ ¼±ÅÃ
+		} else { //ë¬¼í’ˆ ë³´ë‚´ê¸°ë¥¼ ì„ íƒ
 
 		}
 	});
 
 	$(document).on('click', '.buttonFM', function() {
 		var id = $(this).attr("id");
-		if (id.match("F_manager")) { //¸ÅÀå °ü¸®¸¦ Å¬¸¯ ÇßÀ»¶§
+		if (id.match("F_manager")) { //ë§¤ì¥ ê´€ë¦¬ë¥¼ í´ë¦­ í–ˆì„ë•Œ
 			var w = 300;
-			var h = 500; 
+			var h = 500;
 			var left = (screen.width / 2) - (w / 2);
 			var top = (screen.height / 2) - (h / 2);
-			window.open("${pageContext.request.contextPath}/admin/admin_Manager_MyStore.jsp", "¸ÅÀå Á¤º¸", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+			window.open("${pageContext.request.contextPath}/admin/admin_Manager_MyStore.jsp", "ë§¤ì¥ ì •ë³´", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 
 		} else {
 			$("#content").load("${pageContext.request.contextPath}/admin/admin_Manager_Registration.jsp");
 		}
 	});
-	$(document).on('click', '#store_product', function() { //¸ÅÀå µî·Ï -> ÆÇ¸ÅÇÒ ¾ÆÀÌÅÛ ¼±ÅÃÁØºñ
+	$(document).on('click', '#store_product', function() { //ë§¤ì¥ ë“±ë¡ -> íŒë§¤í•  ì•„ì´í…œ ì„ íƒì¤€ë¹„
 		window.open("${pageContext.request.contextPath}/admin/admin_SalesProduct_regit.jsp");
 	});
 
-	$(document).on('click', '#regitFormSubmit', function() { //¸ÅÀå µî·Ï -> µî·Ï ¹öÆ° ¼±ÅÃ
-		var formData = $("#regitForm").serialize(); // Æûµ¥ÀÌÅÍ¸¦ Á÷·ÄÈ­
+	$(document).on('click', '#regitFormSubmit', function() { //ë§¤ì¥ ë“±ë¡ -> ë“±ë¡ ë²„íŠ¼ ì„ íƒ
+		var formData = $("#regitForm").serialize(); // í¼ë°ì´í„°ë¥¼ ì§ë ¬í™”
 		var htmlText = "";
 		$.ajax({
 			type : "post",
@@ -94,19 +95,19 @@
 				$("#content").html(htmlText);
 			},
 			error : function(xhr, status, error) {
-				console.log("¿¡·¯!: " + error + " " + "»óÅÂ" + status);
+				console.log("ì—ëŸ¬!: " + error + " " + "ìƒíƒœ" + status);
 			},
 		});
 	});
-	
-	$(document).on('click', '#p_Stock', function() {//Àç°í ÇöÈ² Å¬¸¯
+
+	$(document).on('click', '#p_Stock', function() { //ì¬ê³  í˜„í™© í´ë¦­
 		var w = 300;
-		var h = 300; 
+		var h = 300;
 		var left = (screen.width / 2) - (w / 2);
 		var top = (screen.height / 2) - (h / 2);
-		window.open("${pageContext.request.contextPath}/admin/stock/admin_crrent_Stock.jsp", "Àç°í ÇöÈ²", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
-
+		window.open("${pageContext.request.contextPath}/admin/stock/admin_crrent_Stock.jsp", "ì¬ê³  í˜„í™©", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 	});
+
 </script>
 
 <title>Insert title here</title>

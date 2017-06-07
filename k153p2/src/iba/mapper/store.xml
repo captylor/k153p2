@@ -7,10 +7,10 @@
 
 	<insert id="insert" parameterClass="store">
 		insert into storeinfo
-		(store_no, store_name, store_addr, store_tel,
+		(store_no, store_name, store_addr2, store_tel,
 		store_product,STORE_OPENDAY,store_owner)
 		values
-		(STOREINFO_SEQ.nextval,#store_name#,#store_addr#,#store_tel#,#store_product#,sysdate,#store_owner#)
+		(STOREINFO_SEQ.nextval,#store_name#,#store_addr2#,#store_tel#,#store_product#,to_char(sysdate,'yyyy-mm-dd'),#store_owner#)
 	</insert>
 
 	<insert id="insert_init_stock" parameterClass="java.util.Map">
@@ -60,7 +60,7 @@
 	</select>
 
 	<select id="sel_myStore" parameterClass="String" resultClass="store">
-		select STORE_NO,STORE_NAME,STORE_ADDR,STORE_TEL,STORE_PRODUCT
+		select STORE_NO,STORE_NAME,STORE_ADDR2,STORE_TEL,STORE_PRODUCT
 		from
 		storeinfo
 		where store_owner=#store_owner#

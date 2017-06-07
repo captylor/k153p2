@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.kosta.k153p2.product.dao.ItemInfoDao;
 import com.kosta.k153p2.product.dto.ItemInfo;
 
-import sun.rmi.server.Dispatcher;
-
 @WebServlet("/item.do")
 public class ProductCtrl extends HttpServlet {
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <style>
-#store_product {
+#store_product, #addr_no {
 	background-color: #9999FF;
 }
 </style>
@@ -13,11 +13,23 @@
 			</tr>
 			<tr>
 				<td>지점명</td>
-				<td><input type="text" id="store_name" name="store_name" value=""></td>
+				<td><input type="text" id="store_name" name="store_name"
+					value=""></td>
 			</tr>
 			<tr>
-				<td>주소</td>
-				<td><input type="text" id="store_addr" name="store_addr" value=""></td>
+				<td>우편번호</td>
+				<td><input type="text" id="addr_no" name="addr_no"
+					value="클릭 해주세요!!" readonly></td>
+			</tr>
+			<tr>
+				<td>주소1</td>
+				<td><input type="text" id="store_addr1" name="store_addr1"
+					value="" readonly></td>
+			</tr>
+			<tr>
+				<td>주소2</td>
+				<td><input type="text" id="store_addr2" name="store_addr2"
+					value=""></td>
 			</tr>
 			<tr>
 				<td>연락처</td>
@@ -29,8 +41,8 @@
 					value="클릭 해주세요!!" readonly></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="button" value="등록" id="regitFormSubmit">
-					<input type="reset" value="취소"></td>
+				<td colspan="2" align="center"><input type="button" value="등록"
+					id="regitFormSubmit"> <input type="reset" value="취소"></td>
 			</tr>
 		</table>
 	</form>
