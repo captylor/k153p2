@@ -31,10 +31,11 @@
 	</update>
 
 	<select id="selectAll" resultClass="com.kosta.k153p2.admin.dto.StoreInfo">
-		select
-		ID,NAME,TEL,CONTENTS,GDATE
-		from storeinfo
-		order by id desc
+		select store_no, store_name,
+		store_addr, store_addr2, store_tel, store_product, store_photo
+		from
+		storeInfo
+		order by store_no desc
 	</select>
 
 	<!-- 수정폼에 출력할 데이터 조회 -->
@@ -73,10 +74,77 @@
 
 	<select id="sel_crr_stock" resultClass="com.kosta.k153p2.admin.dto.Item_Stock"
 		parameterClass="String">
-		select ITEM_NO,item_name,STOCK_AMOUNT,STORE_NO from STOCKINFO inner
+		select ITEM_NO,item_name,STOCK_AMOUNT,STORE_NO from
+		STOCKINFO inner
 		JOIN ITEMINFO USING(item_no)
-		where STORE_NO = (select STOREINFO.STORE_NO from STOREINFO where
+		where STORE_NO = (select
+		STOREINFO.STORE_NO from STOREINFO where
 		STOREINFO.STORE_OWNER=#id#)
+	</select>
+	<!-- ================================ -->
+	<!-- ================================ -->
+
+	<select id="selectStore" resultClass="store" parameterClass="String">
+		select store_no, store_name, store_addr, store_addr2, store_tel,
+		store_product, store_openday, store_photo
+		from storeinfo, ds_zip
+		where
+		ds_id=store_addr and ds_sido=#location#
+		order by store_no
+	</select>
+
+	<select id="selectResult" resultClass="store" parameterClass="int">
+		select store_name, store_addr, store_addr2, store_tel,
+		store_product,
+		store_openday, store_photo
+		from storeinfo
+		where
+		store_no=#store_no#
+	</select>
+
+	<!-- 제품이름과 사진경로 받아오기 -->
+	<select id="selectProduct" parameterClass="int"
+		resultClass="com.kosta.k153p2.store.dto.ProductInfo">
+		select item_name, item_photo
+		from iteminfo
+		where
+		item_no=#product_no#
+	</select>
+
+	<!-- 아이템 타입no로 아이템타입받아오기 -->
+	<select id="itemType" resultClass="String">
+		select itemType
+		from
+		itemtypeinfo
+	</select>
+
+	<!-- 아이템 타입으로 아이템 타입넘버 리턴 -->
+	<select id="selectTypeNo" resultClass="String" parameterClass="String">
+		select itemType_no
+		from itemtypeinfo
+		where itemType=#itemType#
+	</select>
+
+	<!-- 아이템타입no랑 아이템name을 받아 아이템번호 list 리턴 -->
+	<select id="selectItemNo" resultClass="int" parameterClass="java.util.Map">
+		select item_no
+		from iteminfo
+		where item_name like #name# and
+		itemType_no=#typeNo#
+	</select>
+
+	<select id="sel_All_Type" resultClass="String" parameterClass="String">
+		select ITEMTYPE
+		from itemtypeinfo
+	</select>
+
+	<select id="sel_sellItem_store" resultClass="store" parameterClass="String">
+		select store_name, store_addr, store_addr2, store_tel,
+		store_product,
+		store_openday, store_photo
+		from storeinfo
+		where
+		store_no=#store_no#
 	</select>
 </sqlMap>
   

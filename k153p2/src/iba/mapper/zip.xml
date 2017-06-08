@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="zip">
+  <!-- zip.xml -->
+	<!-- 시, 도검색 jsp에 시도 출력용-->
+	<select id="selectSido" resultClass="String">
+		select  distinct(ds_sido)
+		from ds_zip
+	</select>
+	
+	<select id="selectAddr" resultClass="com.kosta.k153p2.store.dto.AddrInfo" parameterClass="String">
+		select ds_id, ds_sido, ds_gugun, ds_dong, store_addr2,storeInfo.STORE_NAME,storeInfo.STORE_TEL,store_no
+		from ds_zip, storeInfo
+		where ds_id=store_addr and ds_sido=#location#
+		order by store_no
+	</select>
+	
+	<select id="selectAll" resultClass="com.kosta.k153p2.store.dto.AddrInfo">
+		select ds_id, ds_sido, ds_gugun, ds_dong, store_addr2
+		from ds_zip, storeInfo
+		where ds_id=store_addr
+		order by store_no
+	</select>
+	
+	<!--store_no를 입력받아 주소 출력  -->
+	<select id="selectStoreNo" resultClass="com.kosta.k153p2.store.dto.AddrInfo" parameterClass="int">
+		select ds_id, ds_sido, ds_gugun, ds_dong, store_addr2
+		from ds_zip, storeInfo
+		where ds_id=store_addr and store_no=#store_no#
+	</select>
+</sqlMap>

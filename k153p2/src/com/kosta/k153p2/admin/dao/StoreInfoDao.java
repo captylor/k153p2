@@ -117,4 +117,15 @@ public class StoreInfoDao {
 		}
 		return list;
 	}//sel_crr_stock
+	
+	public List<String> sel_All_Type(){
+		List<String> list = null;
+		try {
+			list = sqlMap.queryForList("store.sel_All_Type");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}//sel_All_Type
 }
