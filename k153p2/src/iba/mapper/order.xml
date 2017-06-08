@@ -37,6 +37,16 @@
 		where order_handle = #order_handle#
 		order by order_no
 	</select>
+	
+	<update id="stockUpdate" parameterClass="com.kosta.k153p2.init2.dto.Order">
+		update stockinfo set stock_amount=stock_amount+#order_amount#
+		where store_no=#store_no# and item_no=#item_no#
+	</update>
+	
+	<update id="stockSuccess" parameterClass="com.kosta.k153p2.init2.dto.Order">
+		update orderinfo set order_handle=#order_handle#
+		where order_no=#order_no#
+	</update>
 </sqlMap>
 
 

@@ -99,4 +99,21 @@ public class OrderDAO {
 		return list;
 	}
 	
+	public boolean stockUpdate(Order order){		// 제품신청에 따른 재고증가
+		int t1=0; //재고증가 성공여부
+		int t2=0; //처리됨 변경여부
+		try {
+			t1 = sqlMap.update("order.stockUpdate",order);	//제품 재고 증가
+			if(t1==1){
+				t2 = sqlMap.update("order.stockSuccess",order);	// 미처리--> 처리됨 으로변경
+				if(t2==1){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }

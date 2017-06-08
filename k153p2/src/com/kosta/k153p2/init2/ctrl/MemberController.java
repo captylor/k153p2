@@ -124,7 +124,6 @@ public class MemberController extends HttpServlet{
 			}
 			for(int i=0; i<list_amount.size(); i++){   //판매하는 제품(db와연결된)에 대한  발주량을 추가 후 dao호출
 				if(!(list_amount.get(i)=="") && !(list_amount.get(i).equals(null)	&& !(list_itemNo.get(i)==null))){
-					System.out.println(list_itemNo.get(i)+"\t"+list_amount.get(i));
 					Order order = new Order();
 						order.setStore_name(store_name);
 						order.setStore_no(Integer.parseInt(store_no));
@@ -133,22 +132,11 @@ public class MemberController extends HttpServlet{
 						if(dao.insertGuest(order)){//주문 성공시 초기 주문창으로
 							req.getSession().removeAttribute("selectStore");
 							req.getSession().removeAttribute("store_name");
-							req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);
 						}//if
 				}//if
 			}//for
+			req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);
 		}else if(action.equals("guest")){
-			OrderDAO dao = new OrderDAO();
-			List<Order> list = dao.selectAll("미처리");
-			
-			
-			req.setAttribute("list", list);
-			req.getRequestDispatcher("/init2/board_Order_View.jsp").forward(req, resp);
-		}else if(action.equals("sendProduct")){
-			
-			
-			
-			
 			OrderDAO dao = new OrderDAO();
 			List<Order> list = dao.selectAll("미처리");
 			
