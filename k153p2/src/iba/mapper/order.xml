@@ -30,6 +30,13 @@
 		insert into orderinfo(order_no, store_no, item_no, order_amount)  
 						values(orderinfo_seq.nextval, #store_no#, #item_no#, #order_amount#)
 	</insert>
+	
+	<select id="selectAll" resultClass="com.kosta.k153p2.init2.dto.Order" parameterClass="String">
+		select order_no, store_no, item_no, order_amount, order_date, order_handle
+		from orderinfo
+		where order_handle = #order_handle#
+		order by order_no
+	</select>
 </sqlMap>
 
 

@@ -89,6 +89,14 @@ public class OrderDAO {
 		return false;
 	}
 	
-	
+	public List<Order> selectAll(String order_handle){
+		List<Order> list = null;
+		try {
+			list = sqlMap.queryForList("order.selectAll",order_handle);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 }

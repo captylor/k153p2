@@ -90,7 +90,6 @@ public class MemberController extends HttpServlet{
 		}else if(action.equals("order")){
 			req.getSession().removeAttribute("selectStore");
 			req.getSession().removeAttribute("store_name");
-			req.getSession().removeAttribute("selectStore");
 			req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);	
 		}else if(action.equals("showstore")){
 			if(req.getSession().getAttribute("selectStore")==null && req.getSession().getAttribute("store_name")==null){
@@ -134,12 +133,27 @@ public class MemberController extends HttpServlet{
 						if(dao.insertGuest(order)){//주문 성공시 초기 주문창으로
 							req.getSession().removeAttribute("selectStore");
 							req.getSession().removeAttribute("store_name");
-							req.getSession().removeAttribute("selectStore");
 							req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);
 						}//if
 				}//if
 			}//for
 		}else if(action.equals("guest")){
+			OrderDAO dao = new OrderDAO();
+			List<Order> list = dao.selectAll("미처리");
+			
+			
+			req.setAttribute("list", list);
+			req.getRequestDispatcher("/init2/board_Order_View.jsp").forward(req, resp);
+		}else if(action.equals("sendProduct")){
+			
+			
+			
+			
+			OrderDAO dao = new OrderDAO();
+			List<Order> list = dao.selectAll("미처리");
+			
+			
+			req.setAttribute("list", list);
 			req.getRequestDispatcher("/init2/board_Order_View.jsp").forward(req, resp);
 		}
 		
