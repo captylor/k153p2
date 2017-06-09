@@ -31,10 +31,11 @@
 						values(orderinfo_seq.nextval, #store_no#, #item_no#, #order_amount#)
 	</insert>
 	
-	<select id="selectAll" resultClass="com.kosta.k153p2.init2.dto.Order" parameterClass="String">
-		select order_no, store_no, item_no, order_amount, order_date, order_handle
-		from orderinfo
+	<select id="selectAll" resultClass="com.kosta.k153p2.init2.dto.Order" parameterClass="java.util.Map">
+		select * 
+		from orderinfo 
 		where order_handle = #order_handle#
+		  and	store_no in (select store_no from storeinfo where store_admin=#store_admin#)
 		order by order_no
 	</select>
 	
@@ -47,6 +48,7 @@
 		update orderinfo set order_handle=#order_handle#
 		where order_no=#order_no#
 	</update>
+	
 </sqlMap>
 
 

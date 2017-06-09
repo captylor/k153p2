@@ -7,11 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>발주게시판</title>
 <!--board_Order_View -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+	function sendAll(){
+		if(confirm("정말 모든 제품을 보내시겠습니까??")){
+			location.href="member.do?action=sendAll";
+		}
+	}
+			
+
 	function sendProduct(index,order_no,store_no,itemAmount) {
-		confirm("제품을 보내시겠습니까??")
+		if(confirm("제품을 보내시겠습니까??")){
 		 $('#order_no'+index).val(order_no);		//input에 value 주기
 		 $('#store_no'+index).val(store_no);
 		 $('#itemAmount'+index).val(itemAmount);
@@ -40,6 +46,7 @@
 				}
 			}
 		});
+		}
 	}
 	
 </script>
@@ -48,6 +55,7 @@
 <body>
 	<center>
 		<h3>제품신청현황</h3>
+		<button onclick="sendAll()">모든제품승인</button>
 		<br>
 		<br>
 		<table cellspacing=1 width=600 border=1>

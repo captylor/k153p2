@@ -3,6 +3,7 @@ package com.kosta.k153p2.init2.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.kosta.k153p2.init2.dto.Order;
@@ -89,10 +90,10 @@ public class OrderDAO {
 		return false;
 	}
 	
-	public List<Order> selectAll(String order_handle){
+	public List<Order> selectAll(Map<String, String> map){
 		List<Order> list = null;
 		try {
-			list = sqlMap.queryForList("order.selectAll",order_handle);
+			list = sqlMap.queryForList("order.selectAll",map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -115,5 +116,4 @@ public class OrderDAO {
 		}
 		return false;
 	}
-	
 }
