@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="store">
+  <!-- happyCafe.xml -->
+  	<typeAlias alias="storeInfo" type="com.kosta.k153p2.dto.StoreInfo"/>
+  	
+	<!-- 페이징 전체갯수 가져오기 -->
+	<select id="count" resultClass="Integer">
+		select count(*) 
+		from storeinfo
+	</select>
+	
+	<!-- 페이징 매장전체 데이터 가저오기 -->
+	<select id="selectPageAll" resultClass="storeInfo" parameterClass="java.util.Map"><![CDATA[
+		select store_no, store_name, store_addr, store_addr2, store_tel, store_product, store_photo
+		from (select store_no, store_name, store_addr, store_addr2, store_tel, store_product, store_photo, rownum rn
+			  from (select store_no, store_name, store_addr, store_addr2, store_tel, store_product, store_photo
+			  		from storeinfo
+			  		order by store_no)
+			  )
+		where rn between #start# and #end# 
+	]]></select>
+	
+	
+	<select id="selectStore" resultClass="storeInfo" parameterClass="String">
+		select store_no, store_name, store_addr, store_addr2, store_tel, store_product, store_openday, store_photo
+		from storeinfo, ds_zip
+		where ds_id=store_addr and ds_sido=#location#
+		order by store_no 
+	</select>
+	
+	<select id="selectAll" resultClass="storeInfo">
+		select store_no, store_name, store_addr, store_addr2, store_tel, store_product, store_photo
+		from storeInfo
+	</select>
+	
+	<select id="selectResult" resultClass="storeInfo" parameterClass="int">
+		select store_name, store_addr, store_addr2, store_tel, store_product, store_openday, store_photo
+		from storeinfo
+		where store_no=#store_no#
+	</select>
+	
+	<!-- 제품이름과 사진경로 받아오기 -->
+	<select id="selectProduct" parameterClass="int" resultClass="com.kosta.k153p2.dto.ProductInfo"> 
+		select item_name, item_photo
+		from iteminfo 
+		where item_no=#product_no# 
+	</select>
+	
+	<!-- 아이템 타입no로 아이템타입받아오기 -->
+	<select id="itemType" resultClass="String">
+		select itemType
+		from itemtypeinfo
+	</select>
+	
+	<!-- 아이템 타입으로 아이템 타입넘버 리턴 -->
+	<select id="selectTypeNo" resultClass="String" parameterClass="String">
+		select itemType_no
+		from itemtypeinfo
+		where itemType=#itemType#
+	</select>
+	
+	<!-- 아이템타입no랑 아이템name을 받아 아이템번호 list 리턴 -->
+	<select id="selectItemNo" resultClass="int" parameterClass="java.util.Map">
+		select item_no
+		from iteminfo
+		where item_name like #name# and itemType_no=#typeNo#
+	</select>
+	
+</sqlMap>

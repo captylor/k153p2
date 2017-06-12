@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- main.xml -->
+<sqlMap namespace="main">
+	<select id="selectTOP" resultClass="com.kosta.k153p2.dto.ItemInfo"><![CDATA[
+     select item_no, item_name, item_userPrice, item_masterPrice, itemType_no, item_element, item_photo
+     from (select * from iteminfo order by dbms_random.value)
+     where rownum < 6
+	]]></select>
+  
+	<update id="updateGrade" parameterClass="Map">
+  		update memberinfo set member_grade=#member_grade# 
+  		where member_id=#member_id#
+	</update>
+</sqlMap>
+
+
+
+
+
+
+

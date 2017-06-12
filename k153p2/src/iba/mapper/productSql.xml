@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="product">
+
+	<select id="selectAll" resultClass="com.kosta.k153p2.dto.ItemInfo">
+		select * from ITEMINFO
+	</select>
+
+	<select id="selMenu" resultClass="com.kosta.k153p2.dto.ItemInfo"
+		parameterClass="int">
+		select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO, item_photo
+		from ITEMINFO where ITEMTYPE_NO=#value#
+	</select><!-- 사이드 메뉴에서 빵 또는 음료를 클릭했을때 -->
+
+	<select id="eachItem" resultClass="com.kosta.k153p2.dto.ItemInfo"
+		parameterClass="int">
+		select * from ITEMINFO where ITEM_NO=#value#
+	</select>
+
+	<select id="count" resultClass="int" parameterClass="int">
+		select
+		count(*) from iteminfo where ITEMTYPE_NO=#value#
+	</select>
+
+	<select id="selectPage" resultClass="com.kosta.k153p2.dto.ItemInfo"><![CDATA[
+		select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO, item_photo 
+		from (select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO, item_photo, rownum rn
+				from (select ITEM_NO,ITEM_NAME,ITEM_USERPRICE,ITEMTYPE_NO, item_photo 
+						from iteminfo where ITEMTYPE_NO =#sideM# order by ITEM_NO desc)
+				) 
+		where rn between #start# and #end#]]>
+	</select>
+
+	<select id="selectNoNameType" resultClass="com.kosta.k153p2.dto.ItemInfo">
+		select ITEM_NO,ITEM_NAME,ITEMTYPE_NO from ITEMINFO order by ITEMTYPE_NO
+	</select>
+</sqlMap>

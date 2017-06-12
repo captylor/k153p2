@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- order.xml -->
+<sqlMap namespace="order">
+	<select id="storename" resultClass="String" parameterClass="String">
+		select distinct store_name
+    	from storeinfo, memberinfo
+   		where store_owner = #value#
+	</select>
+	
+	<select id="gethex" parameterClass="String" resultClass="String">
+		select store_product
+		from storeInfo
+		where store_owner = #value#
+	</select>
+	
+	<select id="selectProduct" parameterClass="Map" resultClass="com.kosta.k153p2.dto.ItemInfo">
+		select item_no, item_name, itemtype_no from iteminfo where item_no
+		<iterate prepend="IN" property="item_noList" open="(" close=")" conjunction=",">
+       		#item_noList[]#
+     	</iterate>
+     	order by itemtype_no, item_no
+	</select>
+	
+	<select id="toStore" parameterClass="String" resultClass="String">
+		select store_no
+		from storeinfo 
+		where store_name=#store_name#
+	</select>
+	
+	<insert id="insertOrder" parameterClass="Map">
+		insert into orderinfo(order_no, store_no, item_no, order_amount)  
+		values(orderinfo_seq.nextval, 
+				(select store_no from storeinfo where store_owner=#member_id#), 
+				#item_no#, #order_amount#)
+	</insert>
+	
+	<select id="selectAll" resultClass="com.kosta.k153p2.dto.OrderInfo" parameterClass="java.util.Map">
+		select * 
+		from orderinfo 
+		where order_handle = #order_handle#
+		  and	store_no in (select store_no from storeinfo where store_admin=#store_admin#)
+		order by order_no
+	</select>
+	
+	<update id="stockUpdate" parameterClass="com.kosta.k153p2.dto.OrderInfo">
+		update stockinfo set stock_amount=stock_amount+#order_amount#
+		where store_no=#store_no# and item_no=#item_no#
+	</update>
+	
+	<update id="stockSuccess" parameterClass="com.kosta.k153p2.dto.OrderInfo">
+		update orderinfo set order_handle=#order_handle#
+		where order_no=#order_no#
+	</update>
+</sqlMap>
+
+
+
+
+
+
+
+

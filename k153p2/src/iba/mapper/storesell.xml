@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- storesell.xml -->
+<sqlMap namespace="storesell">
+	<select id="selectItem" resultClass="String" parameterClass="String">
+		select store_product from storeinfo where store_owner=#value#
+	</select>
+	
+	<select id="selectAll" resultClass="com.kosta.k153p2.dto.ItemInfo">
+		select * from iteminfo order by item_no
+	</select>
+	
+	<select id="selectAll2" resultClass="com.kosta.k153p2.dto.ItemTypeInfo">
+		select * from itemtypeinfo order by itemtype_no
+	</select>
+	
+	<select id="selectAll3" resultClass="com.kosta.k153p2.dto.StockInfo" parameterClass="String">
+		select * from stockinfo
+		where store_no in (select store_no from storeinfo where store_owner=#value#)
+		order by item_no
+	</select>
+	
+	<update id="minusStock" parameterClass="java.util.Map">
+		update stockinfo set stock_amount=stock_amount-1
+		where store_no in (select store_no from storeinfo where store_owner=#member_id#) and item_no=#item_no#
+	</update>
+	
+	<select id="buyBoardPazing" resultClass="com.kosta.k153p2.dto.OrderInfo" parameterClass="Map">
+     select order_no, store_no, item_no, order_amount, order_date, order_handle
+     from (select  order_no, store_no, item_no, order_amount, order_date, order_handle, rownum rn
+           from (select  order_no, store_no, item_no, order_amount, order_date, order_handle
+		         from orderinfo
+		         where store_no=(select store_no from storeinfo where store_owner=#member_id#)
+		         order by order_no desc)
+		  )
+     where rn between #start# and #end#
+	</select>
+  
+	<select id="orderinfoCount" resultClass="Integer" parameterClass="String">
+		select count(*) from orderinfo where store_no=(select store_no from storeinfo where store_owner=#value#) 
+	</select>
+	
+	<select id="order_notHandled" resultClass="com.kosta.k153p2.dto.OrderInfo" parameterClass="Map">
+	<![CDATA[
+		select * from orderinfo
+		where order_handle=#order_handle#
+			and store_no in (select store_no from storeinfo where store_admin=#member_id#)
+	]]>
+	</select>
+</sqlMap>
+
+
+
+
+
+
+

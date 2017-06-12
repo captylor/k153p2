@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- happyCafe.xml -->
+<sqlMap namespace="member">
+	<insert id="insert" parameterClass="com.kosta.k153p2.dto.MemberInfo">
+		insert into memberInfo(member_id,member_pass,member_name,member_email,member_icon) 
+					values (#member_id#,#member_pass#,#member_name#,#member_email#,#member_icon#)
+	</insert>
+	
+	<select id="selectlogin" parameterClass="java.util.Map" resultClass="int">
+		select count(*)
+		from memberInfo 
+		where member_id = #member_id#
+		and   member_pass = #member_pass#
+	</select>
+	
+	<select id="selectinfo" parameterClass="String" resultClass="com.kosta.k153p2.dto.MemberInfo">
+		select member_id,member_pass,member_name,member_email,member_grade
+		from memberInfo 
+		where member_id = #member_id#
+	</select>
+	
+	
+	
+	<delete id="delete" parameterClass="String">
+		delete from memberInfo 
+		where member_id=#member_id#
+	</delete>
+	
+	<update id="update" parameterClass="com.kosta.k153p2.dto.MemberInfo">
+		update memberInfo set member_pass=#member_pass#,member_name=#member_name#,member_email=#member_email#
+		where member_id=#member_id#
+	</update>
+	
+	<select id="checkid" parameterClass="String" resultClass="int">	
+		select count(*) 
+		from memberinfo
+		where member_id = #value#
+	</select>
+	
+	<select id="selectGrade" parameterClass="String" resultClass="String">
+		select member_grade from memberinfo where member_id=#value#
+	</select>
+</sqlMap>
