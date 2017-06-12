@@ -3,7 +3,9 @@ package com.kosta.k153p2.init2.ctrl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -102,7 +104,7 @@ public class MemberController extends HttpServlet{
 			req.setAttribute("product", list);
 			
 			req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);	
-		}else if(action.equals("inputguest")){
+		}else if(action.equals("inputguest")){		//게스트 에서 제품신청 출력
 			int count=1;
 			List<String> list_itemNo = new ArrayList<>();
 			List<String> list_amount = new ArrayList<>();
@@ -138,11 +140,40 @@ public class MemberController extends HttpServlet{
 			req.getRequestDispatcher("/init2/admin_Manager_Order.jsp").forward(req, resp);
 		}else if(action.equals("guest")){
 			OrderDAO dao = new OrderDAO();
-			List<Order> list = dao.selectAll("미처리");
+			Map<String, String> map = new HashMap<>();
+			map.put("store_admin", (String) req.getSession().getAttribute("login"));
+			map.put("order_handle", "미처리");
+			
+			List<Order> list = dao.selectAll(map);
 			
 			
-			req.setAttribute("list", list);
+			req.getSession().setAttribute("list", list);
 			req.getRequestDispatcher("/init2/board_Order_View.jsp").forward(req, resp);
+		}else if(action.equals("sendAll")){	// 제품 전체 발송 시!
+			Map<String, String> map = new HashMap<>();
+			OrderDAO dao = new OrderDAO();
+			map.put("store_admin", (String) req.getSession().getAttribute("login"));
+			map.put("order_handle", "미처리");
+			
+			List<Order> listBf = (List<Order>) req.getSession().getAttribute("list");
+			
+			for(int i=0; i<listBf.size(); i++){
+				listBf.get(i).setOrder_no(listBf.get(i).getOrder_no());
+				listBf.get(i).setStore_no(listBf.get(i).getStore_no());
+				listBf.get(i).setItem_no(listBf.get(i).getItem_no());
+				listBf.get(i).setOrder_amount(listBf.get(i).getOrder_amount());
+				listBf.get(i).setOrder_handle("처리됨");
+			}
+			
+			List<Order> listAf = dao.selectAll(map);
+			for(int i=0; i<listBf.size(); i++){  //9개까지만 가능함 why?
+				if(dao.stockUpdate(listBf.get(i))){
+					listBf.set(i,listAf.get(i));
+				}
+			}			
+			req.getSession().setAttribute("list", listBf); // 변화하지않은 리스트값
+			resp.sendRedirect("/k153p2/member.do?action=guest");
+		
 		}
 		
 		

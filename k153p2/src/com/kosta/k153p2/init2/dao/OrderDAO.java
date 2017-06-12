@@ -100,6 +100,8 @@ public class OrderDAO {
 		return list;
 	}
 	
+	
+	
 	public boolean stockUpdate(Order order){		// 제품신청에 따른 재고증가
 		int t1=0; //재고증가 성공여부
 		int t2=0; //처리됨 변경여부
